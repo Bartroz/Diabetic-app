@@ -18,7 +18,16 @@ export class HomepageComponent {
 
   constructor(private service: UsernameService, private router: Router) {}
 
-  goToNextPage() {
-    this.router.navigate(['/userInformation']);
+  goToNextPage(param:string) {
+    
+    if(param === ''){
+      console.log(param);
+      console.log(this.service.isEmpty);
+      this.service.isEmpty = true;
+    } else {
+      this.router.navigate(['/userInformation']);
+      this.service.isEmpty = false;
+    }
+
   }
 }

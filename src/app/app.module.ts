@@ -7,12 +7,13 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { FormsModule } from '@angular/forms';
 import { UsernameService } from './services/username.service';
 import { UserInformationComponent } from './components/user-information/user-information.component';
+import { CheckerDirective } from './directives/checker.directive';
 
 
 
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent,UserInformationComponent  ],
+  declarations: [AppComponent, HomepageComponent,UserInformationComponent, CheckerDirective ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [UsernameService],
   bootstrap: [AppComponent],

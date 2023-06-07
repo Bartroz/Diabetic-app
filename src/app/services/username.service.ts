@@ -3,5 +3,6 @@ import { Injectable } from "@angular/core";
 
 export class UsernameService{
     username: string = ''
+    isEmpty: boolean = false
     constructor(){}
 }
