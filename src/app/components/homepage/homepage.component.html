@@ -1,6 +1,13 @@
 <h1>Welcome to my app for diabetic people!</h1>
 <h2>Hope that you'll find this usefull</h2>
-<p>please insert you name</p>
-<input type="text" [(ngModel)]=name (keyup.enter)="goToNextPage(name)" [appChecker] = '"input"' #textInput>
-<button (click)="goToNextPage(name)"[appChecker]="'button'" >Save</button>
+
+<form #userName="ngForm" (submit)="addUserName(userName)">
+    <label for="name"></label>
+    <input  ngModel type="text" name="name" #name="ngModel" minlength="3" required>
+    <div *ngIf="name.errors?.required">Please insert you name</div>
+    <div *ngIf="name.errors?.minlength">Name have to contain at least 3 letters!</div>
+    <button type="submit" (click)="goToNextPage(name.value)" [disabled]="!userName.valid">Add user name</button>
+</form>
+
+  
 <router-outlet></router-outlet>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsernameService } from 'src/app/services/username.service';
 
@@ -8,26 +9,17 @@ import { UsernameService } from 'src/app/services/username.service';
   styleUrls: ['homepage.component.scss'],
 })
 export class HomepageComponent {
-  get name(): any {
-    return this.service.username;
-  }
-
-  set name(value: any) {
-    this.service.username = value;
-  }
 
   constructor(private service: UsernameService, private router: Router) {}
 
   goToNextPage(param:string) {
-    
-    if(param === ''){
-      console.log(param);
-      console.log(this.service.isEmpty);
-      this.service.isEmpty = true;
-    } else {
-      this.router.navigate(['/userInformation']);
-      this.service.isEmpty = false;
-    }
 
+      this.router.navigate(['/userInformation']);
+      return this.service.username = param; 
+  }
+
+  addUserName(formValue:NgForm){
+    console.log(formValue.value)
+    console.log(formValue.valid)
   }
 }
