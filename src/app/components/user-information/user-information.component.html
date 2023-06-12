@@ -1,2 +1,49 @@
-<h2>Welcome {{userName}}</h2>
+<h2>Welcome {{userName.slice(0,1).toUpperCase() + userName.slice(1).toLowerCase()}}</h2>
+<p>Before we go to the main page I'm kindly asking to fill below form to have most precisious data about you</p>
+
+<form #userInformation="ngForm" (submit)="addUserInformation(userInformation)">
+
+    <div #inputRadioGender>
+        <label for="gender">Gender</label>
+        <input ngModel type="radio" name="gender" #gender="ngModel" value="male" required>Male
+        <input ngModel type="radio" name="gender" #gender="ngModel" value="female" required>Female
+        <input ngModel type="radio" name="gender" #gender="ngModel" value="other" required>Other
+    </div>
+
+    <div #inputAge>
+        <label for="age">Age</label>
+        <input ngModel type="number" name="age" #age="ngModel" placeholder="age" min="13" max="100" required>
+        <div *ngIf="age.errors?.min">You have to be at least 13 years old</div>
+        <div *ngIf="age.errors?.max">User maximum age can be 100 years old</div>
+    </div>
+
+    <div #inputHeight>
+        <label for="height">Height [cm]</label>
+        <input ngModel type="number" name="height" #height="ngModel" placeholder="height" required min="80" max="300">
+        <div *ngIf="height.errors?.min">You height have to be at least 80 cm</div>
+        <div *ngIf="height.errors?.max">Please specify correct height</div>
+    </div>
+
+    <div #inputHeight>
+        <label for="weight">Weight [kg]</label>
+        <input ngModel type="number" name="weight" #weight="ngModel" placeholder="weight" required min="20">
+        <div *ngIf="weight.errors?.min">You cannot weight under 40 kg</div>
+    </div>
+
+    <div #inputRadioComorbidities>
+        <label for="comorbidities">Comorbidities</label>
+        <input ngModel type="radio" name="comorbidities" #comorbidities="ngModel" value="yes" required>Yes
+        <input ngModel type="radio" name="comorbidities" #comorbidities="ngModel" value="no" required>No
+    </div>
+
+    <p>If yes than what comorbidities?</p>
+
+    <label for="addInfo"></label>
+    <textarea ngModel name="addInfo" #addInfo="ngModel" cols="30" rows="10"></textarea>
+
+    <button type="submit" (click)="goToMainPage()" [disabled]="!userInformation.valid">Fill</button>
+    <button type="reset" (click)="resetForm(userInformation)">Reset form</button>
+
+</form>
+
 <router-outlet></router-outlet>

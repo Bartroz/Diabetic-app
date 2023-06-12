@@ -8,14 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { UsernameService } from './services/username.service';
 import { UserInformationComponent } from './components/user-information/user-information.component';
 
-
-
-
-
 @NgModule({
-  declarations: [AppComponent, HomepageComponent,UserInformationComponent,  ],
+  declarations: [AppComponent, HomepageComponent, UserInformationComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [UsernameService],
+  providers: [UsernameService, UsernameService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

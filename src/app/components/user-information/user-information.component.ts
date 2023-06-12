@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { UsernameService } from 'src/app/services/username.service';
 
 @Component({
@@ -9,10 +10,13 @@ import { UsernameService } from 'src/app/services/username.service';
 export class UserInformationComponent {
   userName: string = '';
 
-  constructor(
-    private userService: UsernameService
-    ) 
-    {
-        this.userName = this.userService.username
-    }
+  constructor(private userService: UsernameService) {
+    this.userName = this.userService.username;
+  }
+
+  addUserInformation(userInfo: NgForm) {}
+  goToMainPage() {}
+  resetForm(formValue: NgForm) {
+    formValue.reset();
+  }
 }
