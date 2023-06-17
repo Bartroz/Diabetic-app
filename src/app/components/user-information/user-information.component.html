@@ -1,7 +1,7 @@
 <h2>Welcome {{userName.slice(0,1).toUpperCase() + userName.slice(1).toLowerCase()}}</h2>
 <p>Before we go to the main page I'm kindly asking to fill below form to have most precisious data about you</p>
 
-<form #userInformation="ngForm" (submit)="addUserInformation(userInformation)">
+<form #userInformation="ngForm" (submit)="addUserInformation(userInformation)" >
 
     <div #inputRadioGender>
         <label for="gender">Gender</label>
@@ -18,15 +18,30 @@
     </div>
 
     <div #inputHeight>
-        <label for="height">Height [cm]</label>
+        <label for="height">Height</label>
         <input ngModel type="number" name="height" #height="ngModel" placeholder="height" required min="80" max="300">
+
+        <select ngModel name="heightUnit" #heightUnit="ngModel" required>
+            <option value="cm" selected>cm</option>
+            <option value="ft">ft</option>
+        </select>
+
+        <div *ngIf="heightUnit.errors?.required">Please select an unit</div>
         <div *ngIf="height.errors?.min">You height have to be at least 80 cm</div>
         <div *ngIf="height.errors?.max">Please specify correct height</div>
     </div>
 
     <div #inputHeight>
-        <label for="weight">Weight [kg]</label>
+        <label for="weight">Weight</label>
         <input ngModel type="number" name="weight" #weight="ngModel" placeholder="weight" required min="20">
+
+        <select ngModel name="weightUnit" #weightUnit="ngModel" required>
+            <option value="kg">kg</option>
+            <option value="lbs">lbs</option>
+
+        </select>
+
+        <div *ngIf="weightUnit.errors?.required">Please select an unit</div>
         <div *ngIf="weight.errors?.min">You cannot weight under 40 kg</div>
     </div>
 
@@ -41,9 +56,11 @@
     <label for="addInfo"></label>
     <textarea ngModel name="addInfo" #addInfo="ngModel" cols="30" rows="10"></textarea>
 
-    <button type="submit" (click)="goToMainPage()" [disabled]="!userInformation.valid">Fill</button>
+    <button type="submit" (click)="goToMainPage(userInformation.value)"
+        [disabled]="!userInformation.valid">Fill</button>
     <button type="reset" (click)="resetForm(userInformation)">Reset form</button>
 
 </form>
+
 
 <router-outlet></router-outlet>
