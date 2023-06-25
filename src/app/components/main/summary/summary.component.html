@@ -1,0 +1,35 @@
+<div class="container__userInformation">
+    <p class="container__userInformation__value">Summary</p>
+
+    <ul>
+        <li>
+            <p class="container__userInformation__value">Name: {{username}}</p>
+        </li>
+
+        <li>
+            <p class="container__userInformation__value">Gender: {{userData.gender.slice(0,1).toUpperCase() + userData.gender.slice(1).toLowerCase() }}</p>
+        </li>
+
+        <li>
+            <p class="container__userInformation__value">Age: {{userData.age}}</p>
+        </li>
+
+        <li>
+            <p class="container__userInformation__value">Height: {{userData.height}} cm</p>
+        </li>
+
+        <li>
+            <p class="container__userInformation__value">Weight: {{userData.weight}} kg</p>
+        </li>
+
+        <li>
+            <p class="container__userInformation__value">Comorbidities: {{userData.comorbidities}}</p>
+            <p *ngIf="isFilled"> {{userData.addInfo}}</p>
+        </li>
+
+    </ul>
+
+<button type="submit" (click)="calculateBMI()">Calculate your BMI:</button>
+<p>Your BMI: {{bmi}}</p>
+
+</div>

@@ -21,12 +21,6 @@
         <label for="height">Height</label>
         <input ngModel type="number" name="height" #height="ngModel" placeholder="height" required min="80" max="300">
 
-        <select ngModel name="heightUnit" #heightUnit="ngModel" required>
-            <option value="cm" selected>cm</option>
-            <option value="ft">ft</option>
-        </select>
-
-        <div *ngIf="heightUnit.errors?.required">Please select an unit</div>
         <div *ngIf="height.errors?.min">You height have to be at least 80 cm</div>
         <div *ngIf="height.errors?.max">Please specify correct height</div>
     </div>
@@ -35,13 +29,6 @@
         <label for="weight">Weight</label>
         <input ngModel type="number" name="weight" #weight="ngModel" placeholder="weight" required min="20">
 
-        <select ngModel name="weightUnit" #weightUnit="ngModel" required>
-            <option value="kg">kg</option>
-            <option value="lbs">lbs</option>
-
-        </select>
-
-        <div *ngIf="weightUnit.errors?.required">Please select an unit</div>
         <div *ngIf="weight.errors?.min">You cannot weight under 40 kg</div>
     </div>
 

@@ -6,12 +6,13 @@ export class UserInformationService {
   userInformation: any = {};
 
   downloadData(param: UserData) {
-   return this.userInformation = {
+    return (this.userInformation = {
       gender: param.gender,
       age: param.age,
       height: param.height,
       weight: param.weight,
       comorbidities: param.comorbidities,
-    };
+      additionalInfo: param.addInfo,
+    });
   }
 }

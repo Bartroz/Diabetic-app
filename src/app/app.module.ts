@@ -9,10 +9,13 @@ import { UsernameService } from './services/username.service';
 import { UserInformationComponent } from './components/user-information/user-information.component';
 import { UserInformationService } from './services/userinformation.service';
 import { MainComponent } from './components/main/main.component';
+import { NavbarComponent } from './components/main/navbar/navbar.component';
+import { SummaryComponent } from './components/main/summary/summary.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, UserInformationComponent, MainComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  declarations: [AppComponent, HomepageComponent, UserInformationComponent, MainComponent, NavbarComponent, SummaryComponent],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [UsernameService, UserInformationService],
   bootstrap: [AppComponent],
 })
