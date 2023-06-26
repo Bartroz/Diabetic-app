@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { UserData } from 'src/app/interfaces/userinfo.interface';
 import { UserInformationService } from 'src/app/services/userinformation.service';
 import { UsernameService } from 'src/app/services/username.service';
@@ -22,6 +23,7 @@ export class SummaryComponent {
   };
 
   bmi: number = 0;
+  bmiColor: string = '';
 
   username: string = '';
 
@@ -29,9 +31,11 @@ export class SummaryComponent {
     private userInfo: UserInformationService,
     private userName: UsernameService,
     private http: HttpClient
-  ) {}
+  ) {
+    let isBmiCorrect;
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): any {
     this.userData = {
       gender: this.userInfo.userInformation.gender,
       age: this.userInfo.userInformation.age,
@@ -48,7 +52,29 @@ export class SummaryComponent {
     }
   }
 
-  calculateBMI(): number {
-    return (this.bmi = this.userData.height / this.userData.weight);
+  calculateBmi() {
+    let isBmiCorrect: boolean = false;
+    this.userInfo.calculateBMI().subscribe(
+      (response) => {
+        console.log(response);
+        this.bmi = response.bmi.toFixed(3);
+        console.log(this.bmi);
+      },
+      (err) => console.log(err)
+    );
+
+    setTimeout(() => {
+      if (this.bmi < 18.5) {
+        this.bmiColor = 'red';
+        isBmiCorrect = false;
+      } else if (this.bmi > 18.5 && this.bmi < 24.99) {
+        this.bmiColor = 'green';
+        isBmiCorrect = false;
+      } else if (this.bmi >= 25) {
+        this.bmiColor = 'red';
+        isBmiCorrect = false;
+      }
+      console.log(this.bmi);
+    }, 1000);
   }
 }

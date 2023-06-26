@@ -7,7 +7,8 @@
         </li>
 
         <li>
-            <p class="container__userInformation__value">Gender: {{userData.gender.slice(0,1).toUpperCase() + userData.gender.slice(1).toLowerCase() }}</p>
+            <p class="container__userInformation__value">Gender: {{userData.gender.slice(0,1).toUpperCase() +
+                userData.gender.slice(1).toLowerCase() }}</p>
         </li>
 
         <li>
@@ -29,7 +30,11 @@
 
     </ul>
 
-<button type="submit" (click)="calculateBMI()">Calculate your BMI:</button>
-<p>Your BMI: {{bmi}}</p>
+    <button (click)="calculateBmi()">Calculate your BMI</button>
+    <p [ngStyle]="{color: bmiColor}">Your BMI: {{bmi}}</p>
+     <ng-template *ngIf="isBmiCorrect; else showCommunicate">Your
+        weight is
+        correct</ng-template>
+    <ng-template #showCommunicate>Your weight is not correct!</ng-template>
 
 </div>
