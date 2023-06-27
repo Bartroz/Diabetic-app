@@ -1,6 +1,18 @@
-input.ng-invalid{
-    border: 1px solid red
-}
-input.ng-valid{
-    border: 1px solid rgb(0, 255, 42)
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__form {
+    &__input {
+      display: block;
     }
+  }
+}
+
+input.ng-invalid {
+  border: 1px solid red;
+}
+input.ng-valid {
+  border: 1px solid rgb(0, 255, 42);
+}

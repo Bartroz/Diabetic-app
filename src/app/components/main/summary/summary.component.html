@@ -32,9 +32,9 @@
 
     <button (click)="calculateBmi()">Calculate your BMI</button>
     <p [ngStyle]="{color: bmiColor}">Your BMI: {{bmi}}</p>
-     <ng-template *ngIf="isBmiCorrect; else showCommunicate">Your
-        weight is
-        correct</ng-template>
-    <ng-template #showCommunicate>Your weight is not correct!</ng-template>
+
+    <div>Your weight is <span *ngIf="isBmiCorrect; else showCommunicate">correct</span></div>
+
+    <ng-template #showCommunicate>not correct</ng-template>
 
 </div>

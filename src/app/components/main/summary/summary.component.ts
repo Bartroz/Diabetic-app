@@ -24,6 +24,7 @@ export class SummaryComponent {
 
   bmi: number = 0;
   bmiColor: string = '';
+  isBmiCorrect: boolean = false;
 
   username: string = '';
 
@@ -31,9 +32,7 @@ export class SummaryComponent {
     private userInfo: UserInformationService,
     private userName: UsernameService,
     private http: HttpClient
-  ) {
-    let isBmiCorrect;
-  }
+  ) {}
 
   ngOnInit(): any {
     this.userData = {
@@ -66,13 +65,13 @@ export class SummaryComponent {
     setTimeout(() => {
       if (this.bmi < 18.5) {
         this.bmiColor = 'red';
-        isBmiCorrect = false;
+        this.isBmiCorrect = false;
       } else if (this.bmi > 18.5 && this.bmi < 24.99) {
         this.bmiColor = 'green';
-        isBmiCorrect = false;
+        this.isBmiCorrect = true;
       } else if (this.bmi >= 25) {
         this.bmiColor = 'red';
-        isBmiCorrect = false;
+        this.isBmiCorrect = false;
       }
       console.log(this.bmi);
     }, 1000);
