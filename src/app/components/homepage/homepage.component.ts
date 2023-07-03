@@ -9,17 +9,14 @@ import { UsernameService } from 'src/app/services/username.service';
   styleUrls: ['homepage.component.scss'],
 })
 export class HomepageComponent {
-
+  isEmpty: boolean = false;
   constructor(private service: UsernameService, private router: Router) {}
 
-  goToNextPage(param:string) {
-
-      this.router.navigate(['/userInformation']);
-      return this.service.username = param; 
+  goToNextPage(param: string) {
+    this.router.navigate(['/userInformation']);
+    return (this.service.username = param);
   }
 
-  addUserName(formValue:NgForm){
-    console.log(formValue.value)
-    console.log(formValue.valid)
+  addUserName(formValue: NgForm) {
   }
 }

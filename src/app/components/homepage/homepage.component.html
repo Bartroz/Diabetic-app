@@ -5,12 +5,13 @@
         <p class="container__info">Please put below your name</p>
         <form class="container__form" #userName="ngForm" (submit)="addUserName(userName)">
             <label for="name"></label>
-            <input class="container__form__input" ngModel type="text" name="name" #name="ngModel" minlength="3" placeholder="Your name"
-                required>
-            <div class="container__form__error" *ngIf="name.errors?.minlength">Name have to contain at least 3 letters!
+            <input class="container__form__input" ngModel type="text" name="name" #name="ngModel" minlength="3"
+                placeholder="Your name" required>
+            <div class="container__form__error" *ngIf="name.errors?.minlength;">Name have to contain at least 3 letters!
             </div>
             <button class="container__form__button" type="submit" (click)="goToNextPage(name.value)"
                 [disabled]="!userName.valid">Add user name</button>
+            
         </form>
     </div>
 
