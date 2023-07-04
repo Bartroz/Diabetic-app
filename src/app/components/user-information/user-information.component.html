@@ -7,17 +7,17 @@
 
         <form #userInformation="ngForm" (submit)="addUserInformation(userInformation)" class="container__form">
 
-            <div class="container__form__gender form-div" #inputRadioGender>
+            <div class="container__form__gender" #inputRadioGender>
                 <label for="gender">Gender</label>
-                <input class="container__form__gender__input" ngModel type="radio" name="gender" #gender="ngModel"
-                    value="male" required>Male
-                <input class="container__form__gender__input" ngModel type="radio" name="gender" #gender="ngModel"
-                    value="female" required>Female
-                <input class="container__form__gender__input" ngModel type="radio" name="gender" #gender="ngModel"
-                    value="other" required>Other
+                <div class="container__form__gender__input"> <input ngModel type="radio" name="gender" #gender="ngModel"
+                        value="male" required>Male </div>
+                <div class="container__form__gender__input"> <input ngModel type="radio" name="gender" #gender="ngModel"
+                        value="female" required>Female </div>
+                <div class="container__form__gender__input"> <input class="container__form__gender__input" ngModel
+                        type="radio" name="gender" #gender="ngModel" value="other" required>Other </div>
             </div>
 
-            <div class="container__form__age form-div" #inputAge>
+            <div class="container__form__age" #inputAge>
                 <label for="age">Age</label>
                 <input class="container__form__age__input" ngModel type="number" name="age" #age="ngModel"
                     placeholder="age" min="13" max="100" required>
@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <div class="container__form__height form-div" #inputHeight>
+            <div class="container__form__height" #inputHeight>
                 <label for="height">Height</label>
                 <input class="container__form__height__input" ngModel type="number" name="height" #height="ngModel"
                     placeholder="height" required min="80" max="300">
@@ -37,7 +37,7 @@
                 </div>
             </div>
 
-            <div class="container__form__weight form-div" #inputHeight>
+            <div class="container__form__weight" #inputHeight>
                 <label for="weight">Weight</label>
                 <input class="container__form__weight__input" ngModel type="number" name="weight" #weight="ngModel"
                     placeholder="weight" required min="20">
@@ -45,26 +45,27 @@
                 </div>
             </div>
 
-            <div class="container__form__comorbidities form-div" #inputRadioComorbidities>
+            <div class="container__form__comorbidities" #inputRadioComorbidities>
                 <label for="comorbidities">Comorbidities</label>
-                <input class="container__form__comorbidities__input" ngModel type="radio" name="comorbidities"
-                    #comorbidities="ngModel" value="yes" required>Yes
-                <input class="container__form__comorbidities__input" ngModel type="radio" name="comorbidities"
-                    #comorbidities="ngModel" value="no" required>No
+                <div class="container__form__comorbidities__input"> <input ngModel type="radio" name="comorbidities"
+                        #comorbidities="ngModel" value="yes" required>Yes </div>
+                <div class="container__form__comorbidities__input"> <input ngModel type="radio" name="comorbidities"
+                        #comorbidities="ngModel" value="no" required>No
+                </div>
             </div>
 
             <p class="container__form__question">If yes than what comorbidities?</p>
 
             <label for="addInfo"></label>
-            <textarea class="container__form__addInfo__input" ngModel name="addInfo" #addInfo="ngModel" cols="30"
-                rows="10"></textarea>
+            <textarea class="container__form__addInfo" ngModel name="addInfo" #addInfo="ngModel" cols="22"
+                rows="8"></textarea>
 
             <div class="container__form__buttons">
                 <button type="submit" (click)="goToMainPage(userInformation.value)"
                     [disabled]="!userInformation.valid">Fill</button>
                 <button type="reset" (click)="resetForm(userInformation)">Reset form</button>
             </div>
-            
+
         </form>
     </div>
 </main>
