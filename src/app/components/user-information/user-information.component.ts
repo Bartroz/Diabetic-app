@@ -22,9 +22,13 @@ export class UserInformationComponent {
 
   addUserInformation(userInfo: NgForm) {}
 
+  goToPreviusPage() {
+    this.router.navigate(['/homepage']);
+  }
+
   goToMainPage(userParam: any) {
-    this.userInformation.downloadData(userParam)
-    this.router.navigate(['/main'])
+    this.userInformation.downloadData(userParam);
+    this.router.navigate(['/main']);
   }
 
   resetForm(formValue: NgForm) {

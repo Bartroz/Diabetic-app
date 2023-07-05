@@ -4,6 +4,7 @@
         </h2>
         <p class="container__info">Before we go to the main page I'm kindly asking to fill below form to have most
             precisious data about you</p>
+        <button class="container__return" (click)="goToPreviusPage()">Previous page</button>
 
         <form #userInformation="ngForm" (submit)="addUserInformation(userInformation)" class="container__form">
 
