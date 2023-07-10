@@ -64,7 +64,7 @@
             <div class="container__form__buttons">
                 <button type="submit" (click)="goToMainPage(userInformation.value)"
                     [disabled]="!userInformation.valid">Fill</button>
-                <button type="reset" (click)="resetForm(userInformation)">Reset form</button>
+                <button appButtonHover type="reset" (click)="resetForm(userInformation) ">Reset form</button>
             </div>
 
         </form>

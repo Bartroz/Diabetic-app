@@ -12,10 +12,13 @@ import { MainComponent } from './components/main/main.component';
 import { NavbarComponent } from './components/main/navbar/navbar.component';
 import { SummaryComponent } from './components/main/summary/summary.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonHoverDirective } from './directives/buttonHoover.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, UserInformationComponent, MainComponent, NavbarComponent, SummaryComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  declarations: [AppComponent, HomepageComponent, UserInformationComponent, MainComponent, NavbarComponent, SummaryComponent, ButtonHoverDirective],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [UsernameService, UserInformationService],
   bootstrap: [AppComponent],
 })

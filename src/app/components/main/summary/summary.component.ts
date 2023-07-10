@@ -76,4 +76,9 @@ export class SummaryComponent {
       console.log(this.bmi);
     }, 1000);
   }
+
+
+  addBlsLevel(){
+    
+  }
 }
