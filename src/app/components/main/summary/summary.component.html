@@ -37,21 +37,6 @@
 
     <ng-template #showCommunicate>not correct</ng-template>
 
-    <button (click)="addBlsLevel()">Add you blood sugar leve</button>
+    <button #addBlsLevelButton (click)="addBlsLevel()">Add you blood sugar leve</button>
 
-    <div class="container__bls__popup">
-        <div class="container__bls__popup__number">
-            <input class="container__bls__popup__number__input" type="number"> 
-        </div>
-        <div class="container__bls__popup__date">
-            <input  class="container__bls__popup__date__input" type="date"> 
-        </div>
-        <div class="container__bls__popup__time">
-            <input class="container__bls__popup__time__input" type="time"> 
-        </div>
-        <div class="container__bls__popup__buttons">
-            <button type="submit" class="container__bls__popup__buttons __submite">YEs</button>
-            <button class="container__bls__popup__buttons __cancel" type="cancel">No</button>
-        </div>
-    </div>
 </div>

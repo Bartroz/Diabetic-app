@@ -1,7 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Output,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserData } from 'src/app/interfaces/userinfo.interface';
+import { ShowPopupService } from 'src/app/services/showpopup.service';
 import { UserInformationService } from 'src/app/services/userinformation.service';
 import { UsernameService } from 'src/app/services/username.service';
 
@@ -11,7 +18,10 @@ import { UsernameService } from 'src/app/services/username.service';
   styleUrls: ['summary.component.scss'],
 })
 export class SummaryComponent {
+  @ViewChild('blsPopup') blsPopup: ElementRef;
+  @Output()
   isFilled: boolean = true;
+  isClicked: boolean = false;
 
   userData: UserData = {
     gender: '',
@@ -31,8 +41,16 @@ export class SummaryComponent {
   constructor(
     private userInfo: UserInformationService,
     private userName: UsernameService,
-    private http: HttpClient
-  ) {}
+    private http: HttpClient,
+    private renderer: Renderer2,
+    private buttonClicked: ShowPopupService
+  ) {
+    // this.renderer.listen('window', 'click', (e: Event) => {
+    //   if (e.target != this.blsPopup.nativeElement) {
+    //     this.isClicked = false;
+    //   }
+    // });
+  }
 
   ngOnInit(): any {
     this.userData = {
@@ -77,8 +95,8 @@ export class SummaryComponent {
     }, 1000);
   }
 
-
-  addBlsLevel(){
-    
+  addBlsLevel() {
+    this.buttonClicked.isButtonClicked = false;
+    console.log(this.buttonClicked.isButtonClicked);
   }
 }
