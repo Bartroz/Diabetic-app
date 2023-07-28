@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { VariableBinding } from '@angular/compiler';
 import {
   Component,
   ElementRef,
@@ -8,7 +9,6 @@ import {
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserData } from 'src/app/interfaces/userinfo.interface';
-import { ShowPopupService } from 'src/app/services/showpopup.service';
 import { UserInformationService } from 'src/app/services/userinformation.service';
 import { UsernameService } from 'src/app/services/username.service';
 
@@ -18,8 +18,8 @@ import { UsernameService } from 'src/app/services/username.service';
   styleUrls: ['summary.component.scss'],
 })
 export class SummaryComponent {
-  @ViewChild('blsPopup') blsPopup: ElementRef;
-  @Output()
+  @ViewChild('paragraph') paragraph: ElementRef;
+
   isFilled: boolean = true;
   isClicked: boolean = false;
 
@@ -41,16 +41,8 @@ export class SummaryComponent {
   constructor(
     private userInfo: UserInformationService,
     private userName: UsernameService,
-    private http: HttpClient,
-    private renderer: Renderer2,
-    private buttonClicked: ShowPopupService
-  ) {
-    // this.renderer.listen('window', 'click', (e: Event) => {
-    //   if (e.target != this.blsPopup.nativeElement) {
-    //     this.isClicked = false;
-    //   }
-    // });
-  }
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): any {
     this.userData = {
@@ -71,11 +63,10 @@ export class SummaryComponent {
 
   calculateBmi() {
     let isBmiCorrect: boolean = false;
+
     this.userInfo.calculateBMI().subscribe(
       (response) => {
-        console.log(response);
         this.bmi = response.bmi.toFixed(3);
-        console.log(this.bmi);
       },
       (err) => console.log(err)
     );
@@ -95,8 +86,15 @@ export class SummaryComponent {
     }, 1000);
   }
 
+  openBlsLevelPopup() {
+    this.isClicked = !this.isClicked;
+  }
+
   addBlsLevel() {
-    this.buttonClicked.isButtonClicked = false;
-    console.log(this.buttonClicked.isButtonClicked);
+    this.isClicked = false;
+  }
+
+  cancelAddBlsLevel() {
+    this.isClicked = false;
   }
 }

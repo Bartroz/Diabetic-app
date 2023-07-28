@@ -14,8 +14,6 @@ import { SummaryComponent } from './components/main/summary/summary.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonHoverDirective } from './directives/buttonHoover.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PopupComponent } from './components/main/popup/popup.component';
-import { ShowPopupService } from './services/showpopup.service';
 
 @NgModule({
   declarations: [
@@ -26,8 +24,7 @@ import { ShowPopupService } from './services/showpopup.service';
     NavbarComponent,
     SummaryComponent,
     ButtonHoverDirective,
-    PopupComponent,
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,7 +32,7 @@ import { ShowPopupService } from './services/showpopup.service';
     HttpClientModule,
     BrowserAnimationsModule,
   ],
-  providers: [UsernameService, UserInformationService, ShowPopupService],
+  providers: [UsernameService, UserInformationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
