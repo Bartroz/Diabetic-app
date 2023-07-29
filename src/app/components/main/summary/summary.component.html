@@ -26,8 +26,9 @@
             </li>
 
             <li class="container__userInformation__value">
-                <p class="container__userInformation__value__text">Comorbidities: <strong></strong>
-                    {{userData.comorbidities}}</p>
+                <p class="container__userInformation__value__text">Comorbidities:
+                    <strong>{{userData.comorbidities}}</strong>
+                </p>
                 <p *ngIf="isFilled"> {{userData.addInfo}}</p>
             </li>
         </ul>
@@ -41,14 +42,15 @@
         <div>Your weight is <span *ngIf="isBmiCorrect; else showCommunicate">correct</span></div>
 
         <ng-template #showCommunicate>not correct</ng-template>
-        
+
     </div>
 
 
-    <button #addBlsLevelButton (click)="openBlsLevelPopup()">Add you blood sugar level</button>
+    <button class="container__showPopup" #addBlsLevelButton (click)=" openBlsLevelPopup()">Add your blood sugar
+        level</button>
 
 
-    <div class="container__bls">
+    <div *ngIf="isClicked" class="container__bls">
         <div class="container__bls__number">
             <p>Your blood sugar level</p>
             <input class="container__bls__number__input" type="number">
@@ -68,5 +70,9 @@
                     class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
+
+
+    <div class="container__test"></div>
+    <!-- *ngFor="let popup of popups" -->
 
 </main>

@@ -1,6 +1,6 @@
 .container {
   width: 100vw;
-  height: 80vh;
+  height: 1200px;
 
   &__userInformation {
     width: 100%;
@@ -22,10 +22,37 @@
   }
 
   &__calculate {
-    &__button,
-    &__score {
-      display: inline-block;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    height: 130px;
+    border-top: 3px solid #a5da8f;
+    border-bottom: 3px solid #a5da8f;
+    &__button {
+      padding: 0 5px;
+      height: 30px;
+      width: 135px;
+      background-color: rgba(255, 255, 255, 0.808);
+      border-radius: 5px;
+      font-size: 14px;
     }
+    &__score {
+      font-weight: bold;
+    }
+  }
+
+  &__showPopup {
+    display: block;
+    margin: auto;
+    padding: 0 5px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    height: 30px;
+    width: 180px;
+    background-color: rgba(255, 255, 255, 0.808);
+    border-radius: 5px;
+    font-size: 14px;
   }
 
   &__bls {
@@ -65,7 +92,7 @@
       button {
         padding: 5px;
         margin: 20px 20px 0;
-        background: none;
+        background-color: #8f8cda;
         border-radius: 50%;
         i {
           display: block;
@@ -73,5 +100,11 @@
         }
       }
     }
+  }
+
+  &__test {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
   }
 }

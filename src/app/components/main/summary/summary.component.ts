@@ -20,6 +20,8 @@ import { UsernameService } from 'src/app/services/username.service';
 export class SummaryComponent {
   @ViewChild('paragraph') paragraph: ElementRef;
 
+  popups: number[] = [];
+
   isFilled: boolean = true;
   isClicked: boolean = false;
 
@@ -91,7 +93,8 @@ export class SummaryComponent {
   }
 
   addBlsLevel() {
-    this.isClicked = false;
+    // this.isClicked = false;
+    this.popups.push(this.popups.length);
   }
 
   cancelAddBlsLevel() {
