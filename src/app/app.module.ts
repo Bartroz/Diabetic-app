@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsernameService } from './services/username.service';
 import { UserInformationComponent } from './components/user-information/user-information.component';
 import { UserInformationService } from './services/userinformation.service';
@@ -24,13 +24,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavbarComponent,
     SummaryComponent,
     ButtonHoverDirective,
-    ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
   providers: [UsernameService, UserInformationService],
   bootstrap: [AppComponent],

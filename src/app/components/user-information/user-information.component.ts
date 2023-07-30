@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserInformationService } from 'src/app/services/userinformation.service';
 import { UsernameService } from 'src/app/services/username.service';
@@ -15,10 +15,46 @@ export class UserInformationComponent {
   constructor(
     private userService: UsernameService,
     private userInformation: UserInformationService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {
     this.userName = this.userService.username;
   }
+
+  userInfomationForm: FormGroup = this.fb.group({
+    gender: ['', { validators: [Validators.required] }],
+    age: [
+      '',
+      {
+        validators: [
+          Validators.required,
+          Validators.min(13),
+          Validators.max(100),
+        ],
+      },
+    ],
+    height: [
+      '',
+      {
+        validators: [
+          Validators.required,
+          Validators.min(80),
+          Validators.max(300),
+        ],
+      },
+    ],
+    weight: [
+      '',
+      {
+        validators: [
+          Validators.required,
+          Validators.min(40),
+          Validators.max(300),
+        ],
+      },
+    ],
+    comorbidities: ['', { validators: [Validators.required] }],
+  });
 
   addUserInformation(userInfo: NgForm) {}
 
