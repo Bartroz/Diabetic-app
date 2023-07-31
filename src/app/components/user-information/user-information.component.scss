@@ -4,7 +4,7 @@
 
 main {
   width: 100vw;
-  height: 105vh;
+  height: 110vh;
 
   .container {
     position: relative;
@@ -48,6 +48,10 @@ main {
       &__height,
       &__gender,
       &__comorbidities {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
         label {
           padding-bottom: 7px;
           font-style: italic;
@@ -57,10 +61,6 @@ main {
       &__age,
       &__weight,
       &__height {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
         width: 100%;
         &__error {
           margin-top: 8px;
@@ -79,6 +79,11 @@ main {
 
       &__gender,
       &__comorbidities {
+        &__error {
+          margin-top: 8px;
+          font-size: 13px;
+          text-align: center;
+        }
         &__input {
           margin: 5px 0;
           input {
@@ -88,10 +93,6 @@ main {
       }
 
       &__comorbidities {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
         margin: 15px 0;
       }
 
@@ -109,6 +110,7 @@ main {
       }
 
       &__buttons {
+        margin-top: 10px;
         button {
           padding: 5px 10px;
           margin: 0 5px;

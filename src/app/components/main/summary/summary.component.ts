@@ -7,6 +7,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { UserData } from 'src/app/interfaces/userinfo.interface';
 import { UserInformationService } from 'src/app/services/userinformation.service';
@@ -21,6 +22,9 @@ export class SummaryComponent {
   @ViewChild('paragraph') paragraph: ElementRef;
 
   popups: number[] = [];
+  blsValue: number[] = [];
+  blsDate: [] = [];
+  blsTime: [] = [];
 
   isFilled: boolean = true;
   isClicked: boolean = false;
@@ -92,12 +96,15 @@ export class SummaryComponent {
     this.isClicked = !this.isClicked;
   }
 
-  addBlsLevel() {
-    // this.isClicked = false;
+  submitBlsLeve(userParam: any) {
+    console.log(userParam);
+    console.log(userParam.number);
     this.popups.push(this.popups.length);
   }
 
   cancelAddBlsLevel() {
     this.isClicked = false;
   }
+
+  addBlsLevel(formValue: NgForm) {}
 }

@@ -6,11 +6,12 @@
             precisious data about you</p>
         <button class="container__return" (click)="goToPreviusPage()">Previous page</button>
 
-        <!-- <form #userInformation="ngForm" (submit)="addUserInformation(userInformation)" class="container__form"> -->
+         <!-- <form #userInformation="ngForm" (submit)="addUserInformation(userInformation)" class="container__form"> 
 
-        <!-- <div class="container__form__gender" #inputRadioGender>
+        <div class="container__form__gender" #inputRadioGender>
                 <label for="gender">Gender</label>
-                <div class="container__form__gender__input"> <input ngModel type="radio" name="gender" #gender="ngModel"
+                <div class="container__form__gender__input">
+                     <input ngModel type="radio" name="gender" #gender="ngModel"
                         value="male" required>Male </div>
                 <div class="container__form__gender__input"> <input ngModel type="radio" name="gender" #gender="ngModel"
                         value="female" required>Female </div>
@@ -65,18 +66,17 @@
                 <button type="submit" (click)="goToMainPage(userInformation.value)"
                     [disabled]="!userInformation.valid">Fill</button>
                 <button type="reset" (click)="resetForm(userInformation) ">Reset form</button>
-            </div> -->
+            </div> 
 
-        <!-- </form> -->
+        </form> -->
+
+        
 
         <form class="container__form" [formGroup]="userInfomationForm">
             <div class="container__form__gender">
                 <label for="gender">Gender</label>
                 <div class="container__form__gender__input">
-
                     <input type="radio" name="gender" value="male" formControlName="gender">Male
-
-
                 </div>
 
                 <div class="container__form__gender__input">
@@ -87,7 +87,7 @@
                     <input type="radio" name="gender" value="other" formControlName="gender">Other
                 </div>
 
-                <div *ngIf="userInfomationForm.get('gender')!.errors?.required">Gender is required.</div>
+                <div class="container__form__gender__error" *ngIf="userInfomationForm.get('gender')!.errors?.required">Gender is required.</div>
 
             </div>
 
@@ -103,7 +103,7 @@
             </div>
 
             <div class="container__form__height" #inputHeight>
-                <label for="height">Height</label>
+                <label for="height">Height [cm]</label>
                 <input class="container__form__height__input" type="number" name="height" placeholder="height"
                     formControlName="height">
                 <div class="container__form__height__error" *ngIf="userInfomationForm.get('height')!.errors?.min">You
@@ -115,7 +115,7 @@
             </div>
 
             <div class="container__form__weight">
-                <label for="weight">Weight</label>
+                <label for="weight">Weight [kg]</label>
                 <input class="container__form__weight__input" type="number" name="weight" placeholder="weight"
                     formControlName="weight">
                 <div class="container__form__weight__error" *ngIf="userInfomationForm.get('weight')!.errors?.min">You
@@ -131,9 +131,9 @@
                 <div class="container__form__comorbidities__input"> <input type="radio" name="comorbidities" value="yes"
                         formControlName="comorbidities">Yes </div>
                 <div class="container__form__comorbidities__input"> <input type="radio" name="comorbidities"
-                        value="no">No
+                        value="no" formControlName="comorbidities">No
                 </div>
-                <div *ngIf="userInfomationForm.get('comorbidities')!.errors?.required">This information is required.
+                <div class="container__form__comorbidities__error" *ngIf="userInfomationForm.get('comorbidities')!.errors?.required">This information is required.
                 </div>
             </div>
 
@@ -143,11 +143,11 @@
             <textarea class="container__form__addInfo" ngModel name="addInfo" #addInfo="ngModel" cols="22"
                 rows="8"></textarea>
 
-            <!-- <div class="container__form__buttons">
-                <button type="submit" (click)="goToMainPage(userInformation.value)"
-                    [disabled]="!userInformation.valid">Fill</button>
-                <button type="reset" (click)="resetForm(userInformation) ">Reset form</button>
-            </div> --> -->
+            <div class="container__form__buttons">
+                <button type="submit" (click)="goToMainPage(userInfomationForm.value)"
+                    [disabled]="!userInfomationForm.valid">Fill</button>
+                <button type="reset" (click)="resetForm() ">Reset form</button>
+            </div>
 
 
         </form>

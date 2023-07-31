@@ -67,7 +67,10 @@ export class UserInformationComponent {
     this.router.navigate(['/main']);
   }
 
-  resetForm(formValue: NgForm) {
-    formValue.reset();
+  // resetForm(formValue: NgForm) {
+  //   formValue.reset();
+  // }
+  resetForm() {
+    this.userInfomationForm.reset();
   }
 }
