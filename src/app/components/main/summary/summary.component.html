@@ -49,8 +49,8 @@
     <button class="container__showPopup" #addBlsLevelButton (click)=" openBlsLevelPopup()">Add your blood sugar
         level</button>
 
-    <!-- *ngIf="isClicked" -->
-    <div class="container__bls">
+    <!--  -->
+    <div *ngIf="isClicked" class="container__bls">
         <form class="container__bls__form" #userBsl="ngForm" (submit)="addBlsLevel(userBsl)">
             <div class="container__bls__form__number">
                 <p>Your blood sugar level</p>
@@ -68,7 +68,7 @@
                     required>
             </div>
             <div class="container__bls__form__buttons">
-                <button (click)="submitBlsLeve(userBsl.value)" type="submit"
+                <button (click)="submitBlsLevel(userBsl.value)" type="submit"
                     class="container__bls__form__buttons __submit"><i class="fa-solid fa-check"></i></button>
                 <button (click)="cancelAddBlsLevel()" class="container__bls__form__buttons __cancel" type="cancel"><i
                         class="fa-solid fa-xmark"></i></button>
@@ -76,10 +76,14 @@
         </form>
     </div>
 
-    {{userBsl.value | json}}
-    <!-- {{userBsl.number | json}} -->
-    <hr>
-    <div class="container__test"></div>
-    <!-- *ngFor="let popup of popups" -->
+    <!-- -->
+    <div class="container__test" *ngFor="let popup of popups">
+        <div *ngFor="let cont of container ">
+            <div class="container__test__div1" *ngFor="let value of blsValue;index as i">{{cont[0]}}</div>
+            <div class="container__test__div1" *ngFor="let value of blsValue;index as i">{{cont[1]}}</div>
+            <div class="container__test__div1" *ngFor="let value of blsValue;index as i">{{cont[2]}}</div>
+        </div>
+    </div>
+
 
 </main>

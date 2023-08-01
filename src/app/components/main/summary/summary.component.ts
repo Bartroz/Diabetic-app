@@ -23,8 +23,10 @@ export class SummaryComponent {
 
   popups: number[] = [];
   blsValue: number[] = [];
-  blsDate: [] = [];
-  blsTime: [] = [];
+  blsDate: any[] = [];
+  blsTime: any[] = [];
+
+  container: any[] = [];
 
   isFilled: boolean = true;
   isClicked: boolean = false;
@@ -96,10 +98,16 @@ export class SummaryComponent {
     this.isClicked = !this.isClicked;
   }
 
-  submitBlsLeve(userParam: any) {
-    console.log(userParam);
-    console.log(userParam.number);
+  submitBlsLevel(userParam: any) {
     this.popups.push(this.popups.length);
+    this.blsValue.push(userParam.number);
+    this.blsDate.push(userParam.date);
+    this.blsTime.push(userParam.time);
+
+    for (let i = 0; i < this.blsDate.length; i++) {
+      this.container = [];
+      this.container.push([this.blsValue[i], this.blsDate[i], this.blsTime[i]]);
+    }
   }
 
   cancelAddBlsLevel() {

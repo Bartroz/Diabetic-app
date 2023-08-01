@@ -70,7 +70,7 @@
     &__form {
       display: block;
       margin: auto;
-  
+
       &__number,
       &__date,
       &__time,
@@ -103,6 +103,17 @@
           }
         }
       }
+    }
+  }
+
+  &__test {
+    width: 500px;
+    height: 300px;
+    border: 1px solid black;
+    &__div1 {
+      width: 100%;
+      height: 100px;
+      border: 1px solid black;
     }
   }
 }
