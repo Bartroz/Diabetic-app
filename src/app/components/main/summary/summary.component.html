@@ -76,14 +76,11 @@
         </form>
     </div>
 
-    <!-- -->
-    <div class="container__test" *ngFor="let popup of popups">
-        <div *ngFor="let cont of container ">
-            <div class="container__test__div1" *ngFor="let value of blsValue;index as i">{{cont[0]}}</div>
-            <div class="container__test__div1" *ngFor="let value of blsValue;index as i">{{cont[1]}}</div>
-            <div class="container__test__div1" *ngFor="let value of blsValue;index as i">{{cont[2]}}</div>
-        </div>
+    <!-- *ngFor="let popup of popups" -->
+    <div class="container__test" *ngFor="let cont of container ">
+        <div>{{cont[1]}}</div>
+        <div>{{cont[2]}}</div>
+        <div>{{cont[3]}}</div>
     </div>
-
 
 </main>
