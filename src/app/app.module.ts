@@ -14,6 +14,7 @@ import { SummaryComponent } from './components/main/summary/summary.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonHoverDirective } from './directives/buttonHoover.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BmiColorDirective } from './directives/bmiColor.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavbarComponent,
     SummaryComponent,
     ButtonHoverDirective,
+    BmiColorDirective,
   ],
   imports: [
     BrowserModule,

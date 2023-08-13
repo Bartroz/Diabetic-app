@@ -94,6 +94,9 @@
             <div class="container__form__age">
                 <label for="age">Age</label>
                 <input class="container__form__age__input" type="number" placeholder="age" formControlName="age">
+                <!-- <div class="container__form__age__error" *ngIf="age.errors?.min">You have to
+                    be at least 13 years old
+                </div> -->
                 <div class="container__form__age__error" *ngIf="userInfomationForm.get('age')!.errors?.min">You have to
                     be at least 13 years old
                 </div>

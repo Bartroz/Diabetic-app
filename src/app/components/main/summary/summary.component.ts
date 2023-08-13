@@ -67,7 +67,6 @@ export class SummaryComponent {
   }
 
   calculateBmi() {
-    let isBmiCorrect: boolean = false;
 
     this.userInfo.calculateBMI().subscribe(
       (response) => {
@@ -87,7 +86,7 @@ export class SummaryComponent {
         this.bmiColor = 'red';
         this.isBmiCorrect = false;
       }
-      console.log(this.bmi);
+
     }, 1000);
   }
 

@@ -37,8 +37,10 @@
 
     <div class="container__calculate">
         <button class="container__calculate__button" (click)="calculateBmi()">Calculate your BMI</button>
-        <p class="container__calculate__score" [ngStyle]="{color: bmiColor}">Your BMI: {{bmi}}</p>
-
+        <!-- [appBmiColor]="'bmiColor'" -->
+        <div>
+            <p class="container__calculate__score" [ngStyle]="{color: bmiColor}">Your BMI: {{bmi}}</p>
+        </div>
         <div>Your weight is <span *ngIf="isBmiCorrect; else showCommunicate">correct</span></div>
 
         <ng-template #showCommunicate>not correct</ng-template>
@@ -49,38 +51,67 @@
     <button class="container__showPopup" #addBlsLevelButton (click)=" openBlsLevelPopup()">Add your blood sugar
         level</button>
 
-    <!--  -->
     <div *ngIf="isClicked" class="container__bls">
         <form class="container__bls__form" #userBsl="ngForm" (submit)="addBlsLevel(userBsl)">
+
             <div class="container__bls__form__number">
-                <p>Your blood sugar level</p>
+                <p class="container__bls__form__number__title">Your blood sugar level</p>
                 <input ngModel name="number" #number="ngModel" class="container__bls__form__number__input" type="number"
-                    required min="0" max="500">
+                    required min="0" max="1000">
+                <div class="container__bls__form__number__error" *ngIf="number.errors?.required">Please fill this area
+                </div>
+                <div class="container__bls__form__number__error" *ngIf="number.errors?.min">Please specify correct value
+                </div>
+                <div class="container__bls__form__number__error" *ngIf="number.errors?.max">Please specify correct value
+                </div>
             </div>
+
             <div class="container__bls__form__date">
-                <p>Date</p>
+                <p class="container__bls__form__date__title">Date</p>
                 <input ngModel name="date" #date="ngModel" class="container__bls__form__date__input" type="date"
                     required>
+                <div class="container__bls__form__date__error" *ngIf="date.errors?.required">Please select a date</div>
             </div>
+
             <div ngModel name="time" #time="ngModel" class="container__bls__form__time">
-                <p>Time</p>
+                <p class="container__bls__form__time__title">Time</p>
                 <input ngModel name="time" #time="ngModel" class="container__bls__form__time__input" type="time"
                     required>
+                <div class="container__bls__form__time__error" *ngIf="time.errors?.required">Please choose a time</div>
             </div>
+
             <div class="container__bls__form__buttons">
                 <button (click)="submitBlsLevel(userBsl.value)" type="submit"
                     class="container__bls__form__buttons __submit"><i class="fa-solid fa-check"></i></button>
                 <button (click)="cancelAddBlsLevel()" class="container__bls__form__buttons __cancel" type="cancel"><i
                         class="fa-solid fa-xmark"></i></button>
             </div>
+
         </form>
     </div>
+    <!-- <div class="container__blsDiv">
+        <div class="container__blsDiv__body">
+            <div class="container__blsDiv__body__first">Blood sugar level: <span></span></div>
+            <div class="container__blsDiv__body__second">
+                <div class="container__blsDiv__body__second__info">Date: <span>2023-12-08</span></div>
+                <div class="container__blsDiv__body__second__info">Time: <span>15:08</span></div>
+            </div>
+        </div>
+        <button class="container__blsDiv__button" type="submit">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+    </div> -->
 
-    <!-- *ngFor="let popup of popups" -->
-    <div class="container__test" *ngFor="let cont of container ">
-        <div>{{cont[1]}}</div>
-        <div>{{cont[2]}}</div>
-        <div>{{cont[3]}}</div>
+    <div class="container__blsDiv" *ngFor="let cont of container ">
+        <div class="container__blsDiv__body">
+            <div class="container__blsDiv__body__first">Blood sugar level: <span
+                    [appBmiColor]="'12'">{{cont[1]}}</span></div>
+            <div class="container__blsDiv__body__second">
+                <div class="container__blsDiv__body__second__info">Date: <span>{{cont[2]}}</span></div>
+                <div class="container__blsDiv__body__second__info">Time: <span>{{cont[3]}}</span></div>
+            </div>
+        </div>
+        <button class="container__blsDiv__button" type="submit">Edit <i class="fa-solid fa-pen-to-square"></i></button>
     </div>
+
+
 
 </main>
