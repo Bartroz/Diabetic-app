@@ -10,6 +10,7 @@ import {
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { UserData } from 'src/app/interfaces/userinfo.interface';
+import { BlsValueService } from 'src/app/services/bls-value.service';
 import { UserInformationService } from 'src/app/services/userinformation.service';
 import { UsernameService } from 'src/app/services/username.service';
 
@@ -21,12 +22,10 @@ import { UsernameService } from 'src/app/services/username.service';
 export class SummaryComponent {
   @ViewChild('paragraph') paragraph: ElementRef;
 
-  popups: number[] = [];
-
   container: any[] = [];
 
   isFilled: boolean = true;
-  isClicked: boolean = false;
+  isClicked: boolean;
 
   userData: UserData = {
     gender: '',
@@ -46,8 +45,11 @@ export class SummaryComponent {
   constructor(
     private userInfo: UserInformationService,
     private userName: UsernameService,
+    private blsValue: BlsValueService,
     private http: HttpClient
-  ) {}
+  ) {
+    this.isClicked = this.blsValue.getBool();
+  }
 
   ngOnInit(): any {
     this.userData = {
@@ -67,7 +69,6 @@ export class SummaryComponent {
   }
 
   calculateBmi() {
-
     this.userInfo.calculateBMI().subscribe(
       (response) => {
         this.bmi = response.bmi.toFixed(3);
@@ -86,26 +87,12 @@ export class SummaryComponent {
         this.bmiColor = 'red';
         this.isBmiCorrect = false;
       }
-
     }, 1000);
   }
 
   openBlsLevelPopup() {
     this.isClicked = !this.isClicked;
+    this.blsValue.isClicked = this.isClicked;
+    console.log(this.blsValue.isClicked);
   }
-
-  submitBlsLevel(userParam: any) {
-      this.container.push([
-        this.popups.length,
-        userParam.number,
-        userParam.date,
-        userParam.time,
-      ]);
-  }
-
-  cancelAddBlsLevel() {
-    this.isClicked = false;
-  }
-
-  addBlsLevel(formValue: NgForm) {}
 }

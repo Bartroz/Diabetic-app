@@ -9,17 +9,16 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: "[appBmiColor]",
+  selector: '[appBmiColor]',
 })
 export class BmiColorDirective implements OnChanges, OnInit {
   @Input() color: string;
 
-  constructor(private renderer: Renderer2, private elRef: ElementRef) {;
+  constructor(private renderer: Renderer2, private elRef: ElementRef) {
+    this.renderer.setStyle(this.elRef.nativeElement, 'color', this.color);
   }
 
   ngOnInit(): void {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.renderer.setStyle(this.elRef.nativeElement, 'color', this.color);
-  }
+  ngOnChanges(changes: SimpleChanges): void {}
 }

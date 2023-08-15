@@ -15,6 +15,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ButtonHoverDirective } from './directives/buttonHoover.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BmiColorDirective } from './directives/bmiColor.directive';
+import { PopupComponent } from './components/main/popup/popup.component';
+import { BlsValuePopupComponent } from './components/main/bls-value-popup/bls-value-popup.component';
+
+
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import { BmiColorDirective } from './directives/bmiColor.directive';
     SummaryComponent,
     ButtonHoverDirective,
     BmiColorDirective,
+    PopupComponent,
+    BlsValuePopupComponent,
+ 
   ],
   imports: [
     BrowserModule,

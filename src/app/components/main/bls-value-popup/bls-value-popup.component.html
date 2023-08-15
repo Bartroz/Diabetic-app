@@ -1,0 +1,42 @@
+<main class="container">
+
+    <div *ngIf="isClicked" class="container__bls">
+        <form class="container__bls__form" #userBsl="ngForm" (submit)="addBlsLevel(userBsl)">
+
+            <div class="container__bls__form__number">
+                <p class="container__bls__form__number__title">Your blood sugar level</p>
+                <input ngModel name="number" #number="ngModel" class="container__bls__form__number__input" type="number"
+                    required min="0" max="1000">
+                <div class="container__bls__form__number__error" *ngIf="number.errors?.required">Please fill this area
+                </div>
+                <div class="container__bls__form__number__error" *ngIf="number.errors?.min">Please specify correct value
+                </div>
+                <div class="container__bls__form__number__error" *ngIf="number.errors?.max">Please specify correct value
+                </div>
+            </div>
+
+            <div class="container__bls__form__date">
+                <p class="container__bls__form__date__title">Date</p>
+                <input ngModel name="date" #date="ngModel" class="container__bls__form__date__input" type="date"
+                    required>
+                <div class="container__bls__form__date__error" *ngIf="date.errors?.required">Please select a date</div>
+            </div>
+
+            <div ngModel name="time" #time="ngModel" class="container__bls__form__time">
+                <p class="container__bls__form__time__title">Time</p>
+                <input ngModel name="time" #time="ngModel" class="container__bls__form__time__input" type="time"
+                    required>
+                <div class="container__bls__form__time__error" *ngIf="time.errors?.required">Please choose a time</div>
+            </div>
+
+            <div class="container__bls__form__buttons">
+                <button (click)="submitBlsLevel(userBsl.value)" type="submit"
+                    class="container__bls__form__buttons __submit"><i class="fa-solid fa-check"></i></button>
+
+            </div>
+
+        </form>
+    </div>
+    <button (click)="cancelAddBlsLevel()" class="container__bls__form__buttons __cancel" type="cancel"><i
+            class="fa-solid fa-xmark"></i></button>
+</main>
