@@ -25,7 +25,7 @@ export class SummaryComponent {
   container: any[] = [];
 
   isFilled: boolean = true;
-  isClicked: boolean;
+  isClicked: any;
 
   userData: UserData = {
     gender: '',
@@ -91,8 +91,8 @@ export class SummaryComponent {
   }
 
   openBlsLevelPopup() {
-    this.isClicked = !this.isClicked;
-    this.blsValue.isClicked = this.isClicked;
-    console.log(this.blsValue.isClicked);
+    this.isClicked = this.blsValue.setBool(true);
+    // this.blsValue.isClicked = this.isClicked;
+    console.log(this.isClicked);
   }
 }
