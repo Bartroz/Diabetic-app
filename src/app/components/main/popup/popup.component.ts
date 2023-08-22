@@ -1,4 +1,5 @@
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { BlsValueService } from 'src/app/services/bls-value.service';
 
 @Component({
@@ -8,8 +9,14 @@ import { BlsValueService } from 'src/app/services/bls-value.service';
 })
 export class PopupComponent {
   popupArray: any[] = [];
+  private subscription: Subscription;
 
   constructor(private blsValue: BlsValueService) {
-    this.popupArray = this.blsValue.getArray();
+    this.subscription = this.blsValue.array$.subscribe((value) => {
+      this.popupArray = value;
+      if (this.popupArray.length == 5) {
+        this.popupArray.shift()
+      }
+    });
   }
 }

@@ -6,11 +6,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class BlsValueService {
   container: any[] = [];
-  isClicked: boolean = false;
+
   private booleanValue: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
   booleanValue$: Observable<boolean> = this.booleanValue.asObservable();
+
+  private Array: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  array$: Observable<any> = this.Array.asObservable();
 
   constructor() {}
 
@@ -18,10 +21,10 @@ export class BlsValueService {
     this.booleanValue.next(value);
   }
 
-  getArray() {
-    return [this.container];
+  setArr(value: any) {
+    const currentData = this.Array.getValue()
+    currentData.push(value)
+    this.Array.next(currentData);
   }
-  getBool() {
-    return this.isClicked;
-  }
+
 }

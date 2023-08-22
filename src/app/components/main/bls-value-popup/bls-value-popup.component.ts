@@ -8,28 +8,30 @@ import { BlsValueService } from 'src/app/services/bls-value.service';
   templateUrl: './bls-value-popup.component.html',
   styleUrls: ['./bls-value-popup.component.scss'],
 })
-export class BlsValuePopupComponent{
-  private subscription: Subscription
+export class BlsValuePopupComponent {
+  private subscription: Subscription;
   popups: number[] = [];
+  container: any[] = [];
   isClicked: boolean;
 
   constructor(private blsValue: BlsValueService) {
-    this.subscription = this.blsValue.booleanValue$.subscribe(value => this.isClicked = value)
-}
-
+    this.subscription = this.blsValue.booleanValue$.subscribe(
+      (value) => (this.isClicked = value)
+    );
+  }
 
   submitBlsLevel(userParam: any) {
-    this.isClicked = false;
-    this.blsValue.container.push([
-      this.popups.length,
+    // this.isClicked = false;
+    const data = [ this.popups.length,
       userParam.number,
       userParam.date,
-      userParam.time,
-    ]);
+      userParam.time]
+      this.blsValue.setArr(data)
+  
   }
 
   cancelAddBlsLevel() {
-    // this.isClicked = false;
+    this.isClicked = false;
     console.log(this.isClicked);
   }
 

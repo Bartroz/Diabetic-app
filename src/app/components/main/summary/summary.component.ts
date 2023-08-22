@@ -48,7 +48,7 @@ export class SummaryComponent {
     private blsValue: BlsValueService,
     private http: HttpClient
   ) {
-    this.isClicked = this.blsValue.getBool();
+
   }
 
   ngOnInit(): any {
@@ -92,7 +92,5 @@ export class SummaryComponent {
 
   openBlsLevelPopup() {
     this.isClicked = this.blsValue.setBool(true);
-    // this.blsValue.isClicked = this.isClicked;
-    console.log(this.isClicked);
   }
 }
