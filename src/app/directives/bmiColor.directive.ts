@@ -12,13 +12,13 @@ import {
   selector: '[appBmiColor]',
 })
 export class BmiColorDirective implements OnChanges, OnInit {
-  @Input() color: string;
+  @Input() appBmiColor: string;
 
-  constructor(private renderer: Renderer2, private elRef: ElementRef) {
-    this.renderer.setStyle(this.elRef.nativeElement, 'color', this.color);
-  }
+  constructor(private renderer: Renderer2, private elRef: ElementRef) {}
 
   ngOnInit(): void {}
 
-  ngOnChanges(changes: SimpleChanges): void {}
+  ngOnChanges(changes: SimpleChanges): void {
+    this.renderer.setStyle(this.elRef.nativeElement, 'color', this.appBmiColor);
+  }
 }

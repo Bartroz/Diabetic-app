@@ -1,9 +1,10 @@
 <main class="container">
     <div class="container__blsDiv" *ngFor="let popup of popupArray ">
         <div class="container__blsDiv__body">
-            <div class="container__blsDiv__body__first">Blood sugar level: <span >{{popup[1]}}</span> </div>
+            <div class="container__blsDiv__body__first">Blood sugar level: <span
+                    [appBmiColor]="blsValueColor">{{popup[1]}}</span> </div>
             <div class="container__blsDiv__body__second">
-                <div class="container__blsDiv__body__second__info">Date: <span>{{popup[2]}}</span></div>     
+                <div class="container__blsDiv__body__second__info">Date: <span>{{popup[2]}}</span></div>
                 <div class="container__blsDiv__body__second__info">Time: <span>{{popup[3]}}</span></div>
             </div>
         </div>
