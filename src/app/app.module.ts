@@ -12,13 +12,13 @@ import { MainComponent } from './components/main/main.component';
 import { NavbarComponent } from './components/main/navbar/navbar.component';
 import { SummaryComponent } from './components/main/summary/summary.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ButtonHoverDirective } from './directives/buttonHoover.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BmiColorDirective } from './directives/bmiColor.directive';
 import { PopupComponent } from './components/main/popup/popup.component';
 import { BlsValuePopupComponent } from './components/main/bls-value-popup/bls-value-popup.component';
-
-
+import { BlsValueService } from './services/bls-value.service';
+import { FormValueService } from './services/form-value.service';
+import { CanActivateGuardService } from './services/can-activate-guard.service';
 
 @NgModule({
   declarations: [
@@ -28,11 +28,9 @@ import { BlsValuePopupComponent } from './components/main/bls-value-popup/bls-va
     MainComponent,
     NavbarComponent,
     SummaryComponent,
-    ButtonHoverDirective,
     BmiColorDirective,
     PopupComponent,
     BlsValuePopupComponent,
- 
   ],
   imports: [
     BrowserModule,
@@ -42,7 +40,14 @@ import { BlsValuePopupComponent } from './components/main/bls-value-popup/bls-va
     BrowserAnimationsModule,
     ReactiveFormsModule,
   ],
-  providers: [UsernameService, UserInformationService],
+  providers: [
+    UsernameService,
+    UserInformationService,
+    BlsValueService,
+    FormValueService,
+    CanActivateGuardService,
+  ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

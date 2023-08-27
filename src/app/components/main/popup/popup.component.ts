@@ -11,19 +11,18 @@ export class PopupComponent {
   popupArray: any[] = [];
   blsValueColor: string;
   private subscription: Subscription;
-  i: number = 0;
 
   constructor(private blsValue: BlsValueService) {
     this.subscription = this.blsValue.array$.subscribe((value) => {
       this.popupArray = value;
-      if (this.popupArray[this.i][1] < 100) {
-        this.blsValueColor = 'red';
-      } else {
-        this.blsValueColor = 'green';
-      }
-
-      console.log(this.popupArray[this.i][1]);
     });
-    this.i++;
+  }
+
+  editBlsValue() {
+    this.blsValue.setBool(true);
+  }
+
+  deleteBlsValue(value: any) {
+    this.popupArray.splice(this.popupArray.indexOf(value), 1);
   }
 }

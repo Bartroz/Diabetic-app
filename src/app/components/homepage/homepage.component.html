@@ -9,9 +9,9 @@
                 placeholder="Your name" required>
             <div class="container__form__error" *ngIf="name.errors?.minlength;">Name have to contain at least 3 letters!
             </div>
-            <button class="container__form__button" type="submit" (click)="goToNextPage(name.value)"
-                [disabled]="!userName.valid">Add user name</button>
-
+            <button class="container__form__button" type="submit" (click)="goToNextPage(name.value,userName)">Add user
+                name</button>
+            <!-- [disabled]="!userName.valid" -->
         </form>
     </div>
 

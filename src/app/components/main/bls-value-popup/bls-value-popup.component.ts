@@ -13,6 +13,7 @@ export class BlsValuePopupComponent {
   popups: number[] = [];
   container: any[] = [];
   isClicked: boolean;
+  bmiColor: string;
 
   constructor(private blsValue: BlsValueService) {
     this.subscription = this.blsValue.booleanValue$.subscribe(
@@ -22,12 +23,22 @@ export class BlsValuePopupComponent {
 
   submitBlsLevel(userParam: any) {
     // this.isClicked = false;
-    const data = [ this.popups.length,
+    if (userParam.number < 100) {
+      this.bmiColor = 'red';
+    } else if (userParam.number >= 100 && userParam.number <= 160) {
+      this.bmiColor = 'green';
+    } else {
+      this.bmiColor = 'red';
+    }
+
+    const data = [
+      this.popups.length,
       userParam.number,
       userParam.date,
-      userParam.time]
-      this.blsValue.setArr(data)
-  
+      userParam.time,
+      this.bmiColor,
+    ];
+    this.blsValue.setArr(data);
   }
 
   cancelAddBlsLevel() {
