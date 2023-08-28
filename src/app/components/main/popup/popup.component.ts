@@ -13,13 +13,19 @@ export class PopupComponent {
   private subscription: Subscription;
 
   constructor(private blsValue: BlsValueService) {
-    this.subscription = this.blsValue.array$.subscribe((value) => {
+    this.subscription = this.blsValue.sendArray$.subscribe((value) => {
       this.popupArray = value;
     });
   }
 
-  editBlsValue() {
+  editBlsValue(value: any) {
     this.blsValue.setBool(true);
+    this.popupArray.splice(this.popupArray.indexOf(value), 1);
+    let removedValue = this.popupArray.splice(
+      this.popupArray.indexOf(value),
+      1
+    );
+    this.blsValue.setRevieveArr(removedValue);
   }
 
   deleteBlsValue(value: any) {

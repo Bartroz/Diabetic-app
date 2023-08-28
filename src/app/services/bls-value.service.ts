@@ -12,8 +12,11 @@ export class BlsValueService {
   );
   booleanValue$: Observable<boolean> = this.booleanValue.asObservable();
 
-  private Array: BehaviorSubject<any> = new BehaviorSubject<any>([]);
-  array$: Observable<any> = this.Array.asObservable();
+  private sendArray: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  sendArray$: Observable<any> = this.sendArray.asObservable();
+
+  private recieveArray: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  recieveArray$: Observable<any> = this.recieveArray.asObservable();
 
   constructor() {}
 
@@ -21,10 +24,15 @@ export class BlsValueService {
     this.booleanValue.next(value);
   }
 
-  setArr(value: any) {
-    const currentData = this.Array.getValue()
-    currentData.push(value)
-    this.Array.next(currentData);
+  setSendArr(value: any) {
+    const currentData = this.sendArray.getValue();
+    currentData.push(value);
+    this.sendArray.next(currentData);
   }
 
+  setRevieveArr(value: any) {
+    const currentData = this.recieveArray.getValue();
+    currentData.push(value);
+    this.recieveArray.next(currentData);
+  }
 }
