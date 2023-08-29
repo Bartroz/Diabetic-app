@@ -31,8 +31,7 @@ export class BlsValueService {
   }
 
   setRevieveArr(value: any) {
-    const currentData = this.recieveArray.getValue();
-    currentData.push(value);
-    this.recieveArray.next(currentData);
+    this.recieveArray.next(value
+      );
   }
 }

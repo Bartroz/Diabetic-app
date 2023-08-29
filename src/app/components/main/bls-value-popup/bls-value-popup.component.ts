@@ -14,15 +14,14 @@ export class BlsValuePopupComponent {
   container: any[] = [];
   isClicked: boolean;
   bmiColor: string;
-  recieveArr = [];
+  recieveArr: any[] = [];
 
   constructor(private blsValue: BlsValueService) {
     this.subscription = this.blsValue.booleanValue$.subscribe(
       (value) => (this.isClicked = value)
     );
-    
+
     this.subscription = this.blsValue.recieveArray$.subscribe((arr) => {
-      this.recieveArr = [];
       this.recieveArr = arr;
       console.log('Bls value component - recived arr', this.recieveArr);
     });
