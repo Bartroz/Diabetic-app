@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -12,19 +12,17 @@ import { FormValueService } from './form-value.service';
 @Injectable({
   providedIn: 'root',
 })
-export class CanActivateGuardService implements CanActivate {
+export class CanActivateGuardService implements CanActivate, OnInit, OnChanges {
   private subscription: Subscription;
   value: boolean;
 
-  constructor(private router: Router, private formService: FormValueService) {
+  constructor(private router: Router, public formService: FormValueService) {}
+
+  ngOnInit(): void {}
+  
+  ngOnChanges(changes: SimpleChanges): void {
     this.subscription = this.formService.formValue$.subscribe((value) => {
-      this.value = value;
-      console.log(this.value + 'this is guard constructor');
-      if (value === true) {
-        console.log('Guard - form is valid');
-      } else {
-        console.log('Guard - form is not valid');
-      }
+      console.log(value);
     });
   }
 

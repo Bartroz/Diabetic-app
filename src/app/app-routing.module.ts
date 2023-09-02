@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'userInformation',
     component: UserInformationComponent,
-    // canActivate: [CanActivateGuardService],
+    canActivate: [CanActivateGuardService],
   },
   { path: 'main', component: MainComponent },
 ];

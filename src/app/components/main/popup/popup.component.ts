@@ -20,7 +20,10 @@ export class PopupComponent {
 
   editBlsValue(value: any) {
     this.blsValue.setBool(true);
-    let removedValue = this.popupArray.splice(this.popupArray.indexOf(value), 1)[0];
+    let removedValue = this.popupArray.splice(
+      this.popupArray.indexOf(value),
+      1
+    )[0];
     this.blsValue.setRevieveArr(removedValue);
   }
 

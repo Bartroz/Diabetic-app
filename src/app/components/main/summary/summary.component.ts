@@ -1,3 +1,10 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { VariableBinding } from '@angular/compiler';
 import {
@@ -18,6 +25,23 @@ import { UsernameService } from 'src/app/services/username.service';
   selector: 'app-summary',
   templateUrl: './summary.component.html',
   styleUrls: ['summary.component.scss'],
+  animations: [
+    trigger('toggleButton', [
+      state(
+        'open',
+        style({
+          height: '40px',
+          width: '150px',
+          borderRadius: '8px',
+        })
+      ),
+      state(
+        'close',
+        style({ height: '35px', width: '135px', borderRadius: '5px' })
+      ),
+      transition('open <=> close', [animate('1s')]),
+    ]),
+  ],
 })
 export class SummaryComponent {
   @ViewChild('paragraph') paragraph: ElementRef;
@@ -26,6 +50,7 @@ export class SummaryComponent {
 
   isFilled: boolean = true;
   isClicked: any;
+  toggle: boolean = false;
 
   userData: UserData = {
     gender: '',
@@ -47,9 +72,7 @@ export class SummaryComponent {
     private userName: UsernameService,
     private blsValue: BlsValueService,
     private http: HttpClient
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): any {
     this.userData = {
@@ -69,6 +92,8 @@ export class SummaryComponent {
   }
 
   calculateBmi() {
+    this.toggle = !this.toggle;
+
     this.userInfo.calculateBMI().subscribe(
       (response) => {
         this.bmi = response.bmi.toFixed(3);

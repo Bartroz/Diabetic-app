@@ -36,7 +36,8 @@
     </div>
 
     <div class="container__calculate">
-        <button class="container__calculate__button" (click)="calculateBmi()">Calculate your BMI</button>
+        <button [@toggleButton]="toggle ? 'open': 'close'" class="container__calculate__button"
+            (click)="calculateBmi()">Calculate your BMI</button>
 
         <div>
             <p class="container__calculate__score" [appBmiColor]="bmiColor">Your BMI: {{bmi}}</p>

@@ -19,14 +19,14 @@ export class HomepageComponent {
   ) {}
 
   goToNextPage(userName: string, formValid: any) {
-    // if (formValid.valid) {
-    //   this.formService.getFormValue(true);
-    //   console.log('form is valid');
-    // } else {
-    //   this.formService.getFormValue(false);
-    //   console.log('form not is valid');
-    // }
-    this.router.navigate(['/userInformation']);
+    if (formValid.valid) {
+      this.formService.getFormValue(true);
+      console.log('form is valid');
+    } else {
+      this.formService.getFormValue(false);
+      console.log('form not is valid');
+    }
+    // this.router.navigate(['/userInformation']);
     return (this.userService.username = userName);
   }
 
