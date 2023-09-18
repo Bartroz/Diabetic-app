@@ -19,10 +19,10 @@ export class CanActivateGuardService implements CanActivate, OnInit, OnChanges {
   constructor(private router: Router, public formService: FormValueService) {}
 
   ngOnInit(): void {}
-  
+
   ngOnChanges(changes: SimpleChanges): void {
     this.subscription = this.formService.formValue$.subscribe((value) => {
-      console.log(value);
+      this.value = value;
     });
   }
 
@@ -35,9 +35,9 @@ export class CanActivateGuardService implements CanActivate, OnInit, OnChanges {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
     if (this.value === true) {
-      this.router.navigate(['/userInformation']);
       return true;
     } else {
+      // this.router.navigate(['/homepage']);
       return false;
     }
   }

@@ -25,13 +25,10 @@ export class BlsValueService {
   }
 
   setSendArr(value: any) {
-    const currentData = this.sendArray.getValue();
-    currentData.push(value);
-    this.sendArray.next(currentData);
+    this.sendArray.next(value);
   }
 
   setRevieveArr(value: any) {
-    this.recieveArray.next(value
-      );
+    this.recieveArray.next(value);
   }
 }

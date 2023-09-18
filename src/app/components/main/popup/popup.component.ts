@@ -14,7 +14,10 @@ export class PopupComponent {
 
   constructor(private blsValue: BlsValueService) {
     this.subscription = this.blsValue.sendArray$.subscribe((value) => {
-      this.popupArray = value;
+      this.popupArray.unshift(value);
+      if (this.popupArray.length > 8) {
+        this.popupArray.pop();
+      }
     });
   }
 

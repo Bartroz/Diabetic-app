@@ -18,15 +18,14 @@ export class HomepageComponent {
     private router: Router
   ) {}
 
-  goToNextPage(userName: string, formValid: any) {
+  goToNextPage(userName: string, formValid: any): string {
     if (formValid.valid) {
       this.formService.getFormValue(true);
-      console.log('form is valid');
+      this.router.navigate(['/userInformation']);
     } else {
       this.formService.getFormValue(false);
       console.log('form not is valid');
     }
-    // this.router.navigate(['/userInformation']);
     return (this.userService.username = userName);
   }
 
