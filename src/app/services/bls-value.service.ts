@@ -1,5 +1,5 @@
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class BlsValueService {
   );
   booleanValue$: Observable<boolean> = this.booleanValue.asObservable();
 
-  private sendArray: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  private sendArray: Subject<any> = new Subject<any>();
   sendArray$: Observable<any> = this.sendArray.asObservable();
 
   private recieveArray: BehaviorSubject<any> = new BehaviorSubject<any>([]);

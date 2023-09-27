@@ -1,13 +1,44 @@
 nav {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-around;
-  width: 100%;
-  .anchors {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &__link {
-      margin: 0 10px;
+  width: 100vw;
+  height: 50px;
+  border-bottom: 1px solid black;
+  z-index: 1;
+  background: linear-gradient(45deg, #20bf55, #01baef);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  .container {
+    &__logo {
+      i {
+        padding: 40px;
+        cursor: pointer;
+      }
+    }
+
+    &__anchors,
+    &__login-button,
+    &__logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &__anchors {
+      &__link {
+        margin: 0 10px;
+      }
+    }
+    &__login-button {
+      padding: 20px;
+      cursor: pointer;
+      button {
+        padding: 5px 10px;
+        border-radius: 10px;
+        background: linear-gradient(45deg, #01baef, #20bf55);
+      }
     }
   }
 }

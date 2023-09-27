@@ -6,5 +6,25 @@
 body {
   font-family: "Montserrat", sans-serif;
   background-image: linear-gradient(180deg, #aff1da, #f9ea8f);
+}
 
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input.ng-invalid {
+  border: 1px solid red;
+  button {
+    border: 1px solid red;
+  }
+}
+
+input.ng-untouched {
+  border: 1px solid black;
+}
+
+input.ng-valid {
+  border: 1px solid rgb(0, 255, 42);
 }

@@ -19,6 +19,7 @@ import { BlsValuePopupComponent } from './components/main/bls-value-popup/bls-va
 import { BlsValueService } from './services/bls-value.service';
 import { FormValueService } from './services/form-value.service';
 import { CanActivateGuardService } from './services/can-activate-guard.service';
+import { loginPanelComponent } from './components/main/loginPanel/loginPanel.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CanActivateGuardService } from './services/can-activate-guard.service';
     BmiColorDirective,
     PopupComponent,
     BlsValuePopupComponent,
+    loginPanelComponent
   ],
   imports: [
     BrowserModule,
