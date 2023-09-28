@@ -1,4 +1,4 @@
-import { Injectable, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Injectable, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -6,8 +6,17 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, map, tap } from 'rxjs';
 import { FormValueService } from './form-value.service';
+
+export const canActivateUserInformation = () => {
+  const form = inject(FormValueService);
+
+  return form.formValue$.pipe(
+    tap(console.log),
+    map((value: boolean) => value)
+  );
+};
 
 @Injectable({
   providedIn: 'root',
