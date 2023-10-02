@@ -21,19 +21,15 @@ export const canActivateUserInformation = () => {
 @Injectable({
   providedIn: 'root',
 })
-export class CanActivateGuardService implements CanActivate, OnInit, OnChanges {
+export class CanActivateGuardService implements CanActivate {
   private subscription: Subscription;
   value: boolean;
 
-  constructor(private router: Router, public formService: FormValueService) {}
+  constructor(private router: Router, public formService: FormValueService){   this.subscription = this.formService.formValue$.subscribe((value) => {
+    this.value = value;
+  });} 
 
-  ngOnInit(): void {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.subscription = this.formService.formValue$.subscribe((value) => {
-      this.value = value;
-    });
-  }
 
   canActivate(
     route: ActivatedRouteSnapshot,
