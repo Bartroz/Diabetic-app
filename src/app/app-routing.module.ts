@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { UserInformationComponent } from './components/user-information/user-information.component';
 import { MainComponent } from './components/main/main.component';
-import { CanActivateGuardService } from './services/can-activate-guard.service';
+import { CanActivateGuardService, canActivateUserInformation } from './services/can-activate-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -14,9 +14,10 @@ const routes: Routes = [
   {
     path: 'userInformation',
     component: UserInformationComponent,
-    // canActivate: [CanActivateGuardService],
+    // canActivate: [canActivateUserInformation],
   },
   { path: 'main', component: MainComponent },
+  { path: '*', redirectTo: '' }
 ];
 
 @NgModule({

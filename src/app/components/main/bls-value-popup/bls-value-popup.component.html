@@ -1,39 +1,39 @@
-<main class="container">
+<main class="blsValuePopup__container">
 
-    <div *ngIf="isClicked" class="container__bls">
-        <form class="container__bls__form" #userBsl="ngForm" (submit)="addBlsLevel(userBsl)">
+    <div *ngIf="isClicked" class="blsValuePopup__container__bls">
+        <form class="blsValuePopup__container__bls__form" #userBsl="ngForm" (submit)="addBlsLevel(userBsl)">
 
-            <div class="container__bls__form__number">
-                <p class="container__bls__form__number__title">Your blood sugar level</p>
-                <input ngModel name="number" #number="ngModel" class="container__bls__form__number__input" type="number"
+            <div class="blsValuePopup__container__bls__form__number">
+                <p class="blsValuePopup__container__bls__form__number__title">Your blood sugar level</p>
+                <input ngModel name="number" #number="ngModel" class="blsValuePopup__container__bls__form__number__input" type="number"
                     required min="0" max="1000" [(ngModel)]="recieveArr[1]">
 
-                <div class="container__bls__form__number__error" *ngIf="number.errors?.required">Please fill this area
+                <div class="blsValuePopup__container__bls__form__number__error" *ngIf="number.errors?.required">Please fill this area
                 </div>
-                <div class="container__bls__form__number__error" *ngIf="number.errors?.min">Please specify correct value
+                <div class="blsValuePopup__container__bls__form__number__error" *ngIf="number.errors?.min">Please specify correct value
                 </div>
-                <div class="container__bls__form__number__error" *ngIf="number.errors?.max">Please specify correct value
+                <div class="blsValuePopup__container__bls__form__number__error" *ngIf="number.errors?.max">Please specify correct value
                 </div>
             </div>
 
-            <div class="container__bls__form__date">
-                <p class="container__bls__form__date__title">Date</p>
-                <input ngModel name="date" #date="ngModel" class="container__bls__form__date__input" type="date"
+            <div class="blsValuePopup__container__bls__form__date">
+                <p class="blsValuePopup__container__bls__form__date__title">Date</p>
+                <input ngModel name="date" #date="ngModel" class="blsValuePopup__container__bls__form__date__input" type="date"
                     [(ngModel)]="recieveArr[2]" required>
-                <div class="container__bls__form__date__error" *ngIf="date.errors?.required">Please select a date</div>
+                <div class="blsValuePopup__container__bls__form__date__error" *ngIf="date.errors?.required">Please select a date</div>
             </div>
 
-            <div ngModel name="time" #time="ngModel" class="container__bls__form__time">
-                <p class="container__bls__form__time__title">Time</p>
-                <input ngModel name="time" #time="ngModel" class="container__bls__form__time__input" type="time"
+            <div ngModel name="time" #time="ngModel" class="blsValuePopup__container__bls__form__time">
+                <p class="blsValuePopup__container__bls__form__time__title">Time</p>
+                <input ngModel name="time" #time="ngModel" class="blsValuePopup__container__bls__form__time__input" type="time"
                     [(ngModel)]="recieveArr[3]" required>
-                <div class="container__bls__form__time__error" *ngIf="time.errors?.required">Please choose a time</div>
+                <div class="blsValuePopup__container__bls__form__time__error" *ngIf="time.errors?.required">Please choose a time</div>
             </div>
 
-            <div class="container__bls__form__buttons">
+            <div class="blsValuePopup__container__bls__form__buttons">
                 <button (click)="submitBlsLevel(userBsl.value)" type="submit" [disabled]="!userBsl.valid"
-                    class="container__bls__form__buttons __submit"><i class="fa-solid fa-check"></i></button>
-                <button (click)="cancelAddBlsLevel()" class="container__bls__form__buttons __cancel" type="cancel"><i
+                    class="blsValuePopup__container__bls__form__buttons __submit"><i class="fa-solid fa-check"></i></button>
+                <button (click)="cancelAddBlsLevel()" class="blsValuePopup__container__bls__form__buttons __cancel" type="cancel"><i
                         class="fa-solid fa-xmark"></i></button>
             </div>
 
