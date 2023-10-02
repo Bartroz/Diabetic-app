@@ -1,29 +1,28 @@
-<main class="container">
-    <!-- -->
+<main class="popup__container">
 
-    <div class="container__blsDiv" *ngFor="let popup of popupArray ">
+    <div class="popup__container__blsDiv" *ngFor="let popup of popupArray ">
 
-        <div class="container__blsDiv__body">
+        <div class="popup__container__blsDiv__body">
 
-            <div class="container__blsDiv__body__first">Blood sugar level:
+            <div class="popup__container__blsDiv__body__first">Blood sugar level:
                 <span [appBmiColor]="popup[4]">{{popup[1]}}</span>
             </div>
 
-            <div class="container__blsDiv__body__second">
-                <div class="container__blsDiv__body__second__info">Date:
+            <div class="popup__container__blsDiv__body__second">
+                <div class="popup__container__blsDiv__body__second__info">Date:
                     <span>{{popup[2]}}</span>
                 </div>
 
-                <div class="container__blsDiv__body__second__info">Time: <span>{{popup[3]}}</span>
+                <div class="popup__container__blsDiv__body__second__info">Time: <span>{{popup[3]}}</span>
                 </div>
             </div>
         </div>
 
-        <div class="container__blsDiv__buttons">
+        <div class="popup__container__blsDiv__buttons">
             <button (click)="editBlsValue(popup)"
-                class="container__blsDiv__buttons__buttonEdit" type="submit"><i
+                class="popup__container__blsDiv__buttons__buttonEdit" type="submit"><i
                     class="fa-solid fa-pen-to-square"></i></button>
-            <button (click)="deleteBlsValue(popup)" class="container__blsDiv__buttons__buttonDelete"><i
+            <button (click)="deleteBlsValue(popup)" class="popup__container__blsDiv__buttons__buttonDelete"><i
                     class="fa-solid fa-trash"></i></button>
         </div>
     </div>

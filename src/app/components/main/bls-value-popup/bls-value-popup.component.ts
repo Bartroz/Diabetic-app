@@ -27,14 +27,13 @@ export class BlsValuePopupComponent {
     });
   }
 
-  submitBlsLevel(userParam: any) {
-    // this.isClicked = false;
+  submitBlsLevel(userParam: any): void {
     if (userParam.number < 100) {
-      this.bmiColor = 'red';
+       this.bmiColor = 'red';
     } else if (userParam.number >= 100 && userParam.number <= 160) {
-      this.bmiColor = 'green';
+       this.bmiColor = 'green';
     } else {
-      this.bmiColor = 'red';
+       this.bmiColor = 'red';
     }
 
     const data = [
@@ -44,12 +43,11 @@ export class BlsValuePopupComponent {
       userParam.time,
       this.bmiColor,
     ];
-    this.blsValue.setSendArr(data);
+     this.blsValue.setSendArr(data);
   }
 
-  cancelAddBlsLevel() {
-    this.isClicked = false;
-    console.log(this.isClicked);
+  cancelAddBlsLevel() : boolean {
+    return this.isClicked = false;
   }
 
   addBlsLevel(formValue: NgForm) {}

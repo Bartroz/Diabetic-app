@@ -1,32 +1,32 @@
-<main class="container">
+<main class="summary__container">
 
-    <div class="container__userInformation">
+    <div class="summary__container__userInformation">
 
-        <p class="container__userInformation__title">Summary</p>
+        <p class="summary__container__userInformation__title">Summary</p>
         <ul>
-            <li class="container__userInformation__value">
+            <li class="summary__container__userInformation__value">
                 <p>Name: {{username}}</p>
             </li>
-            <li class="container__userInformation__value">
-                <p class="container__userInformation__value__text">Gender: <strong>
+            <li class="summary__container__userInformation__value">
+                <p class="summary__container__userInformation__value__text">Gender: <strong>
                         {{userData.gender.slice(0,1).toUpperCase() +
                         userData.gender.slice(1).toLowerCase() }}</strong></p>
             </li>
 
-            <li class="container__userInformation__value">
-                <p class="container__userInformation__value__text">Age: <strong>{{userData.age}}</strong></p>
+            <li class="summary__container__userInformation__value">
+                <p class="summary__container__userInformation__value__text">Age: <strong>{{userData.age}}</strong></p>
             </li>
 
-            <li class="container__userInformation__value">
-                <p class="container__userInformation__value__text">Height: <strong> {{userData.height}} cm</strong></p>
+            <li class="summary__container__userInformation__value">
+                <p class="summary__container__userInformation__value__text">Height: <strong> {{userData.height}} cm</strong></p>
             </li>
 
-            <li class="container__userInformation__value">
-                <p class="container__userInformation__value__text">Weight: <strong> {{userData.weight}} kg</strong></p>
+            <li class="summary__container__userInformation__value">
+                <p class="summary__container__userInformation__value__text">Weight: <strong> {{userData.weight}} kg</strong></p>
             </li>
 
-            <li class="container__userInformation__value">
-                <p class="container__userInformation__value__text">Comorbidities:
+            <li class="summary__container__userInformation__value">
+                <p class="summary__container__userInformation__value__text">Comorbidities:
                     <strong>{{userData.comorbidities}}</strong>
                 </p>
                 <p *ngIf="isFilled"> {{userData.addInfo}}</p>
@@ -35,12 +35,12 @@
 
     </div>
 
-    <div class="container__calculate">
-        <button [@toggleButton]="toggle ? 'open': 'close'" class="container__calculate__button"
+    <div class="summary__container__calculate">
+        <button [@toggleButton]="toggle ? 'open': 'close'" class="summary__container__calculate__button"
             (click)="calculateBmi()">Calculate your BMI</button>
 
         <div>
-            <p class="container__calculate__score" [appBmiColor]="bmiColor">Your BMI: {{bmi}}</p>
+            <p class="summary__container__calculate__score" [appBmiColor]="bmiColor">Your BMI: {{bmi}}</p>
         </div>
         <div>Your weight is <span *ngIf="isBmiCorrect; else showCommunicate">correct</span></div>
 
@@ -49,7 +49,7 @@
     </div>
 
 
-    <button class="container__showPopup" #addBlsLevelButton (click)=" openBlsLevelPopup()">Add your blood sugar
+    <button class="summary__container__showPopup" #addBlsLevelButton (click)=" openBlsLevelPopup()">Add your blood sugar
         level</button>
 
 </main>

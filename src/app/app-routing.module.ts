@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: 'userInformation',
     component: UserInformationComponent,
-    canActivate: [canActivateUserInformation],
+    // canActivate: [canActivateUserInformation],
   },
   { path: 'main', component: MainComponent },
   { path: '*', redirectTo: '' }

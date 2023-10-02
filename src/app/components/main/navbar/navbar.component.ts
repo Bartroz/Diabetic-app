@@ -12,7 +12,7 @@ export class NavbarComponent {
     
     constructor(private loginPanelService:OpenLoginPanelService){}
 
-    showLoginPanel(){
+    showLoginPanel() : void{
         this.loginPanelService.changeBoolValue(this.toggleValue)
     }
 

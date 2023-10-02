@@ -1,152 +1,83 @@
 <main>
-    <div class="container">
-        <h2 class="container__header">Welcome {{userName.slice(0,1).toUpperCase() + userName.slice(1).toLowerCase()}}
+    <div class="userInformation__container">
+        <h2 class="userInformation__container__h2">Welcome {{userName.slice(0,1).toUpperCase() + userName.slice(1).toLowerCase()}}
         </h2>
-        <p class="container__info">Before we go to the main page I'm kindly asking to fill below form to have most
+        <p class="userInformation__container__info">Before we go to the main page I'm kindly asking to fill below form to have most
             precisious data about you</p>
-        <button class="container__return" (click)="goToPreviusPage()">Previous page</button>
+        <button class="userInformation__container__return" (click)="goToPreviusPage()">Previous page</button>
 
-         <!-- <form #userInformation="ngForm" (submit)="addUserInformation(userInformation)" class="container__form"> 
-
-        <div class="container__form__gender" #inputRadioGender>
+        <form class="userInformation__container__form" [formGroup]="userInfomationForm">
+            <div class="userInformation__container__form__gender">
                 <label for="gender">Gender</label>
-                <div class="container__form__gender__input">
-                     <input ngModel type="radio" name="gender" #gender="ngModel"
-                        value="male" required>Male </div>
-                <div class="container__form__gender__input"> <input ngModel type="radio" name="gender" #gender="ngModel"
-                        value="female" required>Female </div>
-                <div class="container__form__gender__input"> <input class="container__form__gender__input" ngModel
-                        type="radio" name="gender" #gender="ngModel" value="other" required>Other </div>
-            </div>
-
-            <div class="container__form__age" #inputAge>
-                <label for="age">Age</label>
-                <input class="container__form__age__input" ngModel type="number" name="age" #age="ngModel"
-                    placeholder="age" min="13" max="100" required>
-                <div class="container__form__age__error" *ngIf="age.errors?.min">You have to be at least 13 years old
-                </div>
-                <div class="container__form__age__error" *ngIf="age.errors?.max">User maximum age can be 100 years old
-                </div>
-            </div>
-
-            <div class="container__form__height" #inputHeight>
-                <label for="height">Height</label>
-                <input class="container__form__height__input" ngModel type="number" name="height" #height="ngModel"
-                    placeholder="height" required min="80" max="300">
-                <div class="container__form__height__error" *ngIf="height.errors?.min">You height have to be at least 80
-                    cm</div>
-                <div class="container__form__height__error" *ngIf="height.errors?.max">Please specify correct height
-                </div>
-            </div>
-
-            <div class="container__form__weight" #inputHeight>
-                <label for="weight">Weight</label>
-                <input class="container__form__weight__input" ngModel type="number" name="weight" #weight="ngModel"
-                    placeholder="weight" required min="20">
-                <div class="container__form__weight__error" *ngIf="weight.errors?.min">You cannot weight under 40 kg
-                </div>
-            </div>
-
-            <div class="container__form__comorbidities" #inputRadioComorbidities>
-                <label for="comorbidities">Comorbidities</label>
-                <div class="container__form__comorbidities__input"> <input ngModel type="radio" name="comorbidities"
-                        #comorbidities="ngModel" value="yes" required>Yes </div>
-                <div class="container__form__comorbidities__input"> <input ngModel type="radio" name="comorbidities"
-                        #comorbidities="ngModel" value="no" required>No
-                </div>
-            </div>
-
-            <p class="container__form__question">If yes than what comorbidities?</p>
-
-            <label for="addInfo"></label>
-            <textarea class="container__form__addInfo" ngModel name="addInfo" #addInfo="ngModel" cols="22"
-                rows="8"></textarea>
-
-            <div class="container__form__buttons">
-                <button type="submit" (click)="goToMainPage(userInformation.value)"
-                    [disabled]="!userInformation.valid">Fill</button>
-                <button type="reset" (click)="resetForm(userInformation) ">Reset form</button>
-            </div> 
-
-        </form> -->
-
-        
-
-        <form class="container__form" [formGroup]="userInfomationForm">
-            <div class="container__form__gender">
-                <label for="gender">Gender</label>
-                <div class="container__form__gender__input">
+                <div class="userInformation__container__form__gender__input">
                     <input type="radio" name="gender" value="male" formControlName="gender">Male
                 </div>
 
-                <div class="container__form__gender__input">
+                <div class="userInformation__container__form__gender__input">
                     <input type="radio" name="gender" value="female" formControlName="gender">Female
                 </div>
 
-                <div class="container__form__gender__input">
+                <div class="userInformation__container__form__gender__input">
                     <input type="radio" name="gender" value="other" formControlName="gender">Other
                 </div>
 
-                <div class="container__form__gender__error" *ngIf="userInfomationForm.get('gender')!.errors?.required">Gender is required.</div>
+                <div class="userInformation__container__form__gender__error" *ngIf="userInfomationForm.get('gender')!.errors?.required">Gender is required.</div>
 
             </div>
 
-            <div class="container__form__age">
+            <div class="userInformation__container__form__age">
                 <label for="age">Age</label>
-                <input class="container__form__age__input" type="number" placeholder="age" formControlName="age">
-                <!-- <div class="container__form__age__error" *ngIf="age.errors?.min">You have to
-                    be at least 13 years old
-                </div> -->
-                <div class="container__form__age__error" *ngIf="userInfomationForm.get('age')!.errors?.min">You have to
+                <input class="userInformation__container__form__age__input" type="number" placeholder="age" formControlName="age">
+                <div class="userInformation__container__form__age__error" *ngIf="userInfomationForm.get('age')!.errors?.min">You have to
                     be at least 13 years old
                 </div>
-                <div class="container__form__age__error" *ngIf="userInfomationForm.get('age')!.errors?.max">User maximum
+                <div class="userInformation__container__form__age__error" *ngIf="userInfomationForm.get('age')!.errors?.max">User maximum
                     age can be 100 years old
                 </div>
             </div>
 
-            <div class="container__form__height" #inputHeight>
+            <div class="userInformation__container__form__height" #inputHeight>
                 <label for="height">Height [cm]</label>
-                <input class="container__form__height__input" type="number" name="height" placeholder="height"
+                <input class="userInformation__container__form__height__input" type="number" name="height" placeholder="height"
                     formControlName="height">
-                <div class="container__form__height__error" *ngIf="userInfomationForm.get('height')!.errors?.min">You
+                <div class="userInformation__container__form__height__error" *ngIf="userInfomationForm.get('height')!.errors?.min">You
                     height have to be at least 80
                     cm</div>
-                <div class="container__form__height__error" *ngIf="userInfomationForm.get('height')!.errors?.max">Please
+                <div class="userInformation__container__form__height__error" *ngIf="userInfomationForm.get('height')!.errors?.max">Please
                     specify correct height
                 </div>
             </div>
 
-            <div class="container__form__weight">
+            <div class="userInformation__container__form__weight">
                 <label for="weight">Weight [kg]</label>
-                <input class="container__form__weight__input" type="number" name="weight" placeholder="weight"
+                <input class="cuserInformation__ontainer__form__weight__input" type="number" name="weight" placeholder="weight"
                     formControlName="weight">
-                <div class="container__form__weight__error" *ngIf="userInfomationForm.get('weight')!.errors?.min">You
+                <div class="userInformation__container__form__weight__error" *ngIf="userInfomationForm.get('weight')!.errors?.min">You
                     cannot weight under 40 kg
                 </div>
-                <div class="container__form__weight__error" *ngIf="userInfomationForm.get('weight')!.errors?.max">Please
+                <div class="userInformation__container__form__weight__error" *ngIf="userInfomationForm.get('weight')!.errors?.max">Please
                     specify correct weight
                 </div>
             </div>
 
-            <div class="container__form__comorbidities">
+            <div class="userInformation__container__form__comorbidities">
                 <label for="comorbidities">Comorbidities</label>
-                <div class="container__form__comorbidities__input"> <input type="radio" name="comorbidities" value="yes"
+                <div class="userInformation__container__form__comorbidities__input"> <input type="radio" name="comorbidities" value="yes"
                         formControlName="comorbidities">Yes </div>
-                <div class="container__form__comorbidities__input"> <input type="radio" name="comorbidities"
+                <div class="userInformation__container__form__comorbidities__input"> <input type="radio" name="comorbidities"
                         value="no" formControlName="comorbidities">No
                 </div>
-                <div class="container__form__comorbidities__error" *ngIf="userInfomationForm.get('comorbidities')!.errors?.required">This information is required.
+                <div class="userInformation__container__form__comorbidities__error" *ngIf="userInfomationForm.get('comorbidities')!.errors?.required">This information is required.
                 </div>
             </div>
 
-            <p class="container__form__question">If yes than what comorbidities?</p>
+            <p class="userInformation__container__form__question">If yes than what comorbidities?</p>
 
             <label for="addInfo"></label>
-            <textarea class="container__form__addInfo" ngModel name="addInfo" #addInfo="ngModel" cols="22"
+            <textarea class="userInformation__container__form__addInfo" ngModel name="addInfo" #addInfo="ngModel" cols="22"
                 rows="8"></textarea>
 
-            <div class="container__form__buttons">
+            <div class="userInformation__container__form__buttons">
                 <button type="submit" (click)="goToMainPage(userInfomationForm.value)"
                     [disabled]="!userInfomationForm.valid">Fill</button>
                 <button type="reset" (click)="resetForm() ">Reset form</button>

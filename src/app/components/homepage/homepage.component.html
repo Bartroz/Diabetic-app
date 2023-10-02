@@ -1,17 +1,16 @@
 <main>
-    <div class="container">
-        <h1 class="container__header">Welcome to my app for diabetic people!</h1>
-        <h2 class="container__header2">Hope that you'll find this usefull</h2>
-        <p class="container__info">Please put below your name</p>
-        <form class="container__form" #userName="ngForm" (submit)="addUserName(userName)">
+    <div class="header__container">
+        <h1 class="header__container__h1">Welcome to my app for diabetic people!</h1>
+        <h2 class="header__container__h2">Hope that you'll find this usefull</h2>
+        <p class="header__container__info">Please put below your name</p>
+        <form class="header__container__form" #userName="ngForm" (submit)="addUserName(userName)">
             <label for="name"></label>
-            <input class="container__form__input" ngModel type="text" name="name" #name="ngModel" minlength="3"
+            <input class="header__container__form__input" ngModel type="text" name="name" #name="ngModel" minlength="3"
                 placeholder="Your name" required>
-            <div class="container__form__error" *ngIf="name.errors?.minlength;">Name have to contain at least 3 letters!
+            <div class="header__container__form__error" *ngIf="name.errors?.minlength;">Name have to contain at least 3 letters!
             </div>
-            <button class="container__form__button" type="submit" (click)="goToNextPage(name.value,userName)">Add user
+            <button class="header__container__form__button" type="submit" (click)="goToNextPage(name.value,userName)">Add user
                 name</button>
-            <!-- [disabled]="!userName.valid" -->
         </form>
     </div>
 
