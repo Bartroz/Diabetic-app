@@ -18,8 +18,8 @@ import { PopupComponent } from './components/main/popup/popup.component';
 import { BlsValuePopupComponent } from './components/main/bls-value-popup/bls-value-popup.component';
 import { BlsValueService } from './services/bls-value.service';
 import { FormValueService } from './services/form-value.service';
-import { CanActivateGuardService } from './services/can-activate-guard.service';
 import { loginPanelComponent } from './components/main/loginPanel/loginPanel.component';
+import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { loginPanelComponent } from './components/main/loginPanel/loginPanel.com
     UserInformationService,
     BlsValueService,
     FormValueService,
-    CanActivateGuardService,
+    CanDeactivateGuard
   ],
 
   bootstrap: [AppComponent],

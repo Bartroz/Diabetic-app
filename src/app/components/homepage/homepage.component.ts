@@ -10,6 +10,9 @@ import { UsernameService } from 'src/app/services/username.service';
   styleUrls: ['homepage.component.scss'],
 })
 export class HomepageComponent {
+
+canNavigate: boolean = true
+
   isEmpty: boolean = false;
 
   constructor(
@@ -18,13 +21,12 @@ export class HomepageComponent {
     private router: Router
   ) {}
 
-  goToNextPage(userName: string, formValid: any): string {
-    if (formValid.valid) {
-      this.formService.getFormValue(true);
+  goToNextPage(userName: string, formValid: boolean | any): string {
+    if (formValid.valid as boolean) {
+      this.canNavigate = true
       this.router.navigate(['/userInformation']);
     } else {
-      this.formService.getFormValue(false);
-      console.log('form not is valid');
+      this.canNavigate = false
     }
     return (this.userService.username = userName);
   }
