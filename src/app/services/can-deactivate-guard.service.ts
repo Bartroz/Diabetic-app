@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
+import { HomepageComponent } from '../components/homepage/homepage.component';
 
-export interface CanComponentDeactivate {
-  canDeactivate: () => Observable<boolean> | Promise<boolean> 
-}
 
 @Injectable({
   providedIn: 'root',
 })
 export class CanDeactivateGuard
-  implements CanDeactivate<CanComponentDeactivate>
+  implements CanDeactivate<HomepageComponent>
 {
   canDeactivate(
-    component: CanComponentDeactivate,
+    component: HomepageComponent,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    if ('canNavigate' in component) {
-      // Check the canNavigate flag in the component
-      return component.canNavigate as boolean;
+    if (component.canNavigate == true) {
+      return true; 
+    } else {
+      return false
     }
-    return true; // Default to true if the flag is not present
   }
 }
