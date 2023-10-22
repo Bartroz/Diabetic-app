@@ -20,6 +20,7 @@ import { BlsValueService } from './services/bls-value.service';
 import { FormValueService } from './services/form-value.service';
 import { loginPanelComponent } from './components/main/loginPanel/loginPanel.component';
 import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
+import { FirebaseService } from './services/firebase.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CanDeactivateGuard } from './services/can-deactivate-guard.service';
     UserInformationService,
     BlsValueService,
     FormValueService,
-    CanDeactivateGuard
+    CanDeactivateGuard,
+    FirebaseService
   ],
 
   bootstrap: [AppComponent],

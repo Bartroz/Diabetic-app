@@ -1,19 +1,16 @@
-import { Injectable } from "@angular/core";
-import { Observable, Subject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class OpenLoginPanelService {
+  private toggleValue: Subject<boolean> = new Subject<boolean>();
+  toogleValue$: Observable<boolean> = this.toggleValue.asObservable();
 
-    private toggleValue: Subject<boolean> = new Subject<boolean>
-    toogleValue$: Observable<boolean> = this.toggleValue.asObservable()
+  constructor() {}
 
-    constructor(){}
-
-    changeBoolValue(value:boolean) {
-        this.toggleValue.next(value)
-    }
-    
+  changeBoolValue(value: boolean) {
+    this.toggleValue.next(value);
+  }
 }
