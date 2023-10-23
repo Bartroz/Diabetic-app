@@ -2,6 +2,8 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { BlsValueService } from 'src/app/services/bls-value.service';
+import { addDoc, collection, getFirestore, serverTimestamp } from 'firebase/firestore';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-bls-value-popup',
@@ -16,7 +18,13 @@ export class BlsValuePopupComponent {
   bmiColor: string;
   recieveArr: any[] = [];
 
-  constructor(private blsValue: BlsValueService) {
+  db = getFirestore();
+  colRef = collection(this.db, 'BloodSugarLevel');
+
+  constructor(
+    private blsValue: BlsValueService,
+    private firebase: FirebaseService
+  ) {
     this.subscription = this.blsValue.booleanValue$.subscribe(
       (value) => (this.isClicked = value)
     );
@@ -29,11 +37,11 @@ export class BlsValuePopupComponent {
 
   submitBlsLevel(userParam: any): void {
     if (userParam.number < 100) {
-       this.bmiColor = 'red';
+      this.bmiColor = 'red';
     } else if (userParam.number >= 100 && userParam.number <= 160) {
-       this.bmiColor = 'green';
+      this.bmiColor = 'green';
     } else {
-       this.bmiColor = 'red';
+      this.bmiColor = 'red';
     }
 
     const data = [
@@ -43,11 +51,18 @@ export class BlsValuePopupComponent {
       userParam.time,
       this.bmiColor,
     ];
-     this.blsValue.setSendArr(data);
+    this.blsValue.setSendArr(data);
+
+    addDoc(this.colRef, {
+      BSL: userParam.number,
+      Date: userParam.date,
+      Hour: userParam.time,
+      // createdAt: serverTimestamp()
+    });
   }
 
-  cancelAddBlsLevel() : boolean {
-    return this.isClicked = false;
+  cancelAddBlsLevel(): boolean {
+    return (this.isClicked = false);
   }
 
   addBlsLevel(formValue: NgForm) {}
