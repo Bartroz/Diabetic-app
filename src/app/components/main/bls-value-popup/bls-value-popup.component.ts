@@ -2,7 +2,15 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { BlsValueService } from 'src/app/services/bls-value.service';
-import { addDoc, collection, getFirestore, serverTimestamp } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  getFirestore,
+  serverTimestamp,
+  onSnapshot,
+  query,
+  orderBy,
+} from 'firebase/firestore';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
@@ -20,6 +28,7 @@ export class BlsValuePopupComponent {
 
   db = getFirestore();
   colRef = collection(this.db, 'BloodSugarLevel');
+  q = query(this.colRef, orderBy('Date'));
 
   constructor(
     private blsValue: BlsValueService,
@@ -55,9 +64,22 @@ export class BlsValuePopupComponent {
 
     addDoc(this.colRef, {
       BSL: userParam.number,
-      Date: userParam.date,
+      Date:
+        userParam.date.split('-')[2] +
+        '-' +
+        userParam.date.split('-')[1] +
+        '-' +
+        userParam.date.split('-')[0],
       Hour: userParam.time,
-      // createdAt: serverTimestamp()
+      createdAt: serverTimestamp(),
+    });
+
+    onSnapshot(this.q, (snapshot) => {
+      let bsl: any[] = [];
+      snapshot.docs.forEach((doc) => {
+        bsl.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(bsl);
     });
   }
 
