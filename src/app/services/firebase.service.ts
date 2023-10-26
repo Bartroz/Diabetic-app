@@ -1,14 +1,16 @@
 import { Injectable, OnInit } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { collection, getFirestore } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
-export class FirebaseService implements OnInit{
+export class FirebaseService implements OnInit {
+  
+  db = getFirestore();
+  colRef = collection(this.db, 'BloodSugarLevel');
 
   constructor() {
-
     const firebaseConfig = {
       apiKey: 'AIzaSyD-ZsdS4ZDrfDxN8JMCKbWTtvwP5VnK-io',
       authDomain: 'diabetic-app-77927.firebaseapp.com',
@@ -22,7 +24,5 @@ export class FirebaseService implements OnInit{
     const app = initializeApp(firebaseConfig);
   }
 
-  ngOnInit(): void {
-   
-  }
+  ngOnInit(): void {}
 }

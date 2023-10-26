@@ -10,6 +10,7 @@ import {
   onSnapshot,
   query,
   orderBy,
+  collectionGroup,
 } from 'firebase/firestore';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
@@ -18,21 +19,21 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   templateUrl: './bls-value-popup.component.html',
   styleUrls: ['./bls-value-popup.component.scss'],
 })
-export class BlsValuePopupComponent {
+export class BlsValuePopupComponent{
   private subscription: Subscription;
   popups: number[] = [];
   container: any[] = [];
   isClicked: boolean;
   bmiColor: string;
   recieveArr: any[] = [];
+  bsl: any[] = [];
 
-  db = getFirestore();
-  colRef = collection(this.db, 'BloodSugarLevel');
-  q = query(this.colRef, orderBy('Date'));
+ 
 
   constructor(
     private blsValue: BlsValueService,
     private firebase: FirebaseService
+
   ) {
     this.subscription = this.blsValue.booleanValue$.subscribe(
       (value) => (this.isClicked = value)
@@ -44,6 +45,7 @@ export class BlsValuePopupComponent {
     });
   }
 
+
   submitBlsLevel(userParam: any): void {
     if (userParam.number < 100) {
       this.bmiColor = 'red';
@@ -53,6 +55,20 @@ export class BlsValuePopupComponent {
       this.bmiColor = 'red';
     }
 
+    addDoc(this.firebase.colRef, {
+      Value: userParam.number,
+      Date:
+        userParam.date.split('-')[1] +
+        '-' +
+        userParam.date.split('-')[2] +
+        '-' +
+        userParam.date.split('-')[0],
+      Hour: userParam.time,
+      createdAt: serverTimestamp(),
+    });
+
+
+
     const data = [
       this.popups.length,
       userParam.number,
@@ -61,26 +77,6 @@ export class BlsValuePopupComponent {
       this.bmiColor,
     ];
     this.blsValue.setSendArr(data);
-
-    addDoc(this.colRef, {
-      BSL: userParam.number,
-      Date:
-        userParam.date.split('-')[2] +
-        '-' +
-        userParam.date.split('-')[1] +
-        '-' +
-        userParam.date.split('-')[0],
-      Hour: userParam.time,
-      createdAt: serverTimestamp(),
-    });
-
-    onSnapshot(this.q, (snapshot) => {
-      let bsl: any[] = [];
-      snapshot.docs.forEach((doc) => {
-        bsl.push({ ...doc.data(), id: doc.id });
-      });
-      console.log(bsl);
-    });
   }
 
   cancelAddBlsLevel(): boolean {
